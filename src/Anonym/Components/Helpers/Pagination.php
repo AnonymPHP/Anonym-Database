@@ -19,8 +19,18 @@
     class Pagination
     {
 
-
+        /**
+         * ayarları tutar
+         *
+         * @var array
+         */
         private $options;
+
+        /**
+         * toplam içerik sayısını tutar
+         *
+         * @var int
+         */
         private $count;
 
         /**
@@ -75,7 +85,7 @@
         private function chieldString($i, $url, $search)
         {
 
-            $url = $this->str_replace($search, $i, $url);
+            $url = str_replace($search, $i, $url);
 
             return "\n <a class='{$this->options['chieldClass']}' href='$url'>$i</a>";
         }
