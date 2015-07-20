@@ -27,4 +27,3 @@
     "psr-4": {"Anonym\\Components\\Upload\\": "src/Anonym/Components/"}
   }
 }
-
