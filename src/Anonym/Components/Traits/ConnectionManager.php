@@ -9,10 +9,22 @@
 
     namespace Anonym\Components\Database\Traits;
 
+    /**
+     * Class ConnectionManager
+     * @package Anonym\Components\Database\Traits
+     */
     trait ConnectionManager
     {
 
+        /**
+         * @var \PDO|\mysqli
+         */
         private $connection;
+        /**
+         * Bağlanılan tabloyu tutar
+         *
+         * @var string
+         */
         private $connectedTable;
 
         /**

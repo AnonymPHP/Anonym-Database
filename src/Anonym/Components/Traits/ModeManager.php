@@ -12,6 +12,10 @@
     use BadFunctionCallException;
     use Anonym\Components\Database\Mode\ModeManager as Mode;
 
+    /**
+     * Class ModeManager
+     * @package Anonym\Components\Database\Traits
+     */
     trait ModeManager
     {
 
@@ -55,7 +59,7 @@
         }
 
         /**
-         * @param type     $modeName
+         * @param type $modeName
          * @param callable $callback
          * @return $this
          * @throws BadFunctionCallException
@@ -70,8 +74,13 @@
                 $this->modes[$modeName] = $call;
             } else {
 
-                throw new BadFunctionCallException(sprintf('%s callable fonksiyonunuzun %s instance\'ine sahip olması gereklidir',
-                   $modeName, 'Anonym\Components\Database\Mode\ModeManager'));
+                throw new BadFunctionCallException(
+                    sprintf(
+                        '%s callable fonksiyonunuzun %s instance\'ine sahip olması gereklidir',
+                        $modeName,
+                        'Anonym\Components\Database\Mode\ModeManager'
+                    )
+                );
             }
 
             return $this;

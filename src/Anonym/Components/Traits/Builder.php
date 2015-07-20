@@ -2,6 +2,11 @@
 
     namespace Anonym\Components\Database\Traits;
 
+    /**
+     * Class Builder
+     * @package Anonym\Components\Database\Traits
+     */
+
     trait Builder
     {
 

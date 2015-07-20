@@ -10,7 +10,7 @@
     {
 
         /**
-         * @param array  $args
+         * @param array $args
          * @param string $start
          * @return mixed
          */
@@ -28,15 +28,15 @@
 
             if (!count($args) === 1) {
 
-                $s = $start . $s;
+                $s = $start.$s;
             }
 
             $s = rtrim($s, $start);
 
             return [
 
-               'content' => $s,
-               'array'   => $arr
+                'content' => $s,
+                'array' => $arr,
             ];
         }
 
@@ -59,8 +59,8 @@
 
             return [
 
-               'content' => rtrim($s, ","),
-               'array'   => $arr
+                'content' => rtrim($s, ","),
+                'array' => $arr,
             ];
         }
     }

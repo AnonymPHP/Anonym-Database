@@ -138,7 +138,7 @@
          * @param array $action
          * @return string
          */
-        public function pagination($action = [], $return = true)
+        public function pagination($configs = [], $action = [], $return = true)
         {
 
             if (!is_array($action)) {
@@ -147,7 +147,7 @@
                     'now' => $this->page,
                 ];
             }
-            $pagination = new Pagination();
+            $pagination = new Pagination($configs);
             $pagination->setCount($this->run()->rowCount());
             $paginate = $pagination->paginate($action);
 
