@@ -72,11 +72,6 @@
         public function run($query = false)
         {
 
-            $add = [
-                'query' => $this->query,
-                'params' => $this->params,
-            ];
-
             if (true === $query) {
                 $query = $this->connection->query($this->query);
                 return $query;
