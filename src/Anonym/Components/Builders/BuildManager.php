@@ -79,12 +79,9 @@
 
             if (true === $query) {
                 $query = $this->connection->query($this->query);
-                $add['response'] = $query;
-
                 return $query;
             } else {
                 $prepare = $this->connection->prepare($this->query);
-                $add['response'] = $prepare;
             }
             if ($prepare instanceof PDOStatement) {
                 $prepare->execute($this->params);
@@ -110,12 +107,15 @@
                 $prepare->execute();
 
             }
-
-            $add['response'] = $prepare;
-
             return $prepare;
         }
 
+        /**
+         *
+         *
+         * @param $arr
+         * @return array
+         */
         private function refValues($arr)
         {
             if (strnatcmp(phpversion(), '5.3') >= 0) //Reference is required for PHP 5.3+
@@ -159,6 +159,11 @@
             }
         }
 
+        /**
+         * @param bool|false $fetchAll
+         * @return array|mixed|object|\stdClass
+         * @throws \Exception
+         */
         public function fetch($fetchAll = false)
         {
 
