@@ -27,11 +27,11 @@
         public function __construct($options = [])
         {
 
-            $host = $options['host'] ?: '';
-            $database = $options['db'] ?: '';
-            $username = $options['username'] ?: '';
-            $password = $options['password'] ?: '';
-            $charset = $options['charset'] ?: 'utf-8';
+            $host = isset($options['host']) ? $options['host'] : '';
+            $database = isset($options['db']) ? $options['db'] : '';
+            $username = isset($options['username']) ? $options['username'] : '';
+            $password = isset($options['password']) ? $options['password'] : '';
+            $charset = isset($options['charset']) ? $options['charset'] : 'utf8';
 
             if (!isset($options['driver'])) {
                 $driver = 'pdo';
@@ -64,12 +64,14 @@
                     $db = new \mysqli($host, $username, $password, $database);
 
                     if ($db->connect_errno > 0) {
-                        throw new \Exception('Bağlantı işlemi başarısız [' . $db->connect_error . ']');
+                        throw new \Exception('Bağlantı işlemi başarısız ['.$db->connect_error.']');
                     }
 
                     $this->db = $db;
                     break;
             }
+
+            $this->db->query(sprintf("SET CHARACTER SET %s", $charset));
         }
 
         /**
