@@ -18,13 +18,23 @@
     use Anonym\Components\Database\Traits\ConnectionManager;
     use Anonym\Components\Database\Traits\ModeManager;
 
+    /**
+     * Class Base
+     * @package Anonym\Components\Database
+     */
     class Base extends Starter
     {
 
         use ConnectionManager,
-           ModeManager;
+            ModeManager;
 
-        public function __construct($configs = '')
+        /**
+         * Sınıfı başlatır ve ayarları kullanır
+         *
+         * @param array $configs
+         * @throws \Exception
+         */
+        public function __construct($configs = [])
         {
 
             parent::__construct($configs);
@@ -61,6 +71,7 @@
 
         /**
          * @param mixed $modes
+         *
          * @return ModeManager
          */
         public function setModes($modes)
@@ -71,9 +82,9 @@
         }
 
         /**
-         * Select i�leminde sorgu olu�turmak da kullan�l�r
+         * Select işlemlerinde kullanılır
          *
-         * @param string   $table
+         * @param string $table
          * @param callable $callable
          * @return mixed
          * @access public
@@ -88,9 +99,9 @@
         }
 
         /**
-         * Update ��lemlerinde kullan�l�r
+         * Update işlemlerinde kullanılır
          *
-         * @param string   $table
+         * @param string $table
          * @param callable $callable
          * @return mixed
          */
@@ -104,9 +115,9 @@
         }
 
         /**
-         * Insert ��lemlerinde kullan�l�r
+         * Insert şlemlerinde kullanılır
          *
-         * @param string   $table
+         * @param string $table
          * @param callable $callable
          * @return mixed
          */
@@ -122,13 +133,12 @@
         /**
          * Delete delete işlemlerinde kullanılır
          *
-         * @param string   $table
+         * @param string $table
          * @param callable $callable
          * @return mixed
          */
         public function delete($table, callable $callable = null)
         {
-
             $this->connect($table);
             $delete = new Delete($this);
 
@@ -136,36 +146,10 @@
         }
 
         /**
-         * Veritabanını yedekler
-         *
-         * @param string $tables Çekilecek tabloların adı, tüm tabloların çekilmesini istiyorsanız * girebilirisiz
-         * @param string $src Dosyanın kaydedileceği yer
-         * @return bool
-         */
-        public function backup($tables = '*', $src = DATABASE)
-        {
-            $backup = new BackUp($this->getConnection());
-
-            return $backup->backUp($tables, $src);
-        }
-
-        /**
-         * Yedeklenen veri tabanı dosyalarını yükler
-         *
-         * @return bool
-         */
-        public function load()
-        {
-            $backup = new BackUp($this->getConnection());
-
-            return $backup->load($this);
-        }
-
-        /**
          * Dinamik method çağrımı
          *
          * @param string $method
-         * @param array  $args
+         * @param array $args
          * @return mixed
          */
         public function __call($method, array $args = [])
