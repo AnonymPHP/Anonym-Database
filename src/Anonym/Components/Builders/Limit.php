@@ -8,8 +8,6 @@
      */
 
     namespace Anonym\Components\Database\Builders;
-
-
     /**
      * Class Limit
      * @package Anonym\Components\Database\Builders
@@ -17,14 +15,12 @@
     class Limit
     {
 
-        use Parser;
-
         public function limit($limit)
         {
 
             if (is_string($limit)) {
 
-                $lArray = $this->explode("..", $limit);
+                $lArray = explode("..", $limit);
             }
 
             if (is_numeric($limit)) {

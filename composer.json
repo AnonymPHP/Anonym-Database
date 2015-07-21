@@ -24,6 +24,6 @@
     "symfony/finder": "2.7.*"
   },
   "autoload": {
-    "psr-4": {"Anonym\\Components\\Upload\\": "src/Anonym/Components/"}
+    "psr-4": {"Anonym\\Components\\Database\\": "src/Anonym/Components/"}
   }
 }
