@@ -15,13 +15,7 @@
       "homepage": "http://www.gemframework.com"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/AnonymPHP/Anonym-Database.git"
-    }
-  ],
-  "require": {
+  "require-dev": {
     "php": ">=5.4.0"
   },
   "autoload": {
