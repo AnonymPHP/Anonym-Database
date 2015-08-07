@@ -5,12 +5,6 @@
   "homepage": "https://gemframework.com",
   "description": "AnonymFramework Database Components",
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git://github.com/AnonymPHP/Anonym-Database.git"
-    }
-  ],
   "minimum-stability": "dev",
   "authors": [
     {
