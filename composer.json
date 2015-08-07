@@ -1,7 +1,7 @@
 {
   "name": "anonym-php/anonym-database",
   "type": "library",
-  "keywords": ["upload"],
+  "keywords": ["database"],
   "homepage": "https://gemframework.com",
   "description": "AnonymFramework Database Components",
   "license": "MIT",
@@ -24,5 +24,10 @@
   },
   "autoload": {
     "psr-4": {"Anonym\\Components\\Database\\": "src/Anonym/Components/"}
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
   }
 }
