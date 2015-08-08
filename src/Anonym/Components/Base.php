@@ -14,7 +14,6 @@
     use Anonym\Components\Database\Mode\Read;
     use Anonym\Components\Database\Mode\Update;
     use Anonym\Components\Database\Mode\Insert;
-    use Anonym\Components\Database\Tools\BackUp;
     use Anonym\Components\Database\Traits\ConnectionManager;
     use Anonym\Components\Database\Traits\ModeManager;
 
