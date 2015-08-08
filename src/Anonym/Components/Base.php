@@ -34,7 +34,7 @@
          * @param array $configs
          * @throws \Exception
          */
-        public function __construct($configs = [])
+        public function __construct(array $configs = [])
         {
 
             parent::__construct($configs);
@@ -164,5 +164,15 @@
             }
 
             return $return;
+        }
+
+        /**
+         * Veritabanının içeriğini döndürür.
+         *
+         * @return $this
+         */
+        public function getInstance()
+        {
+            return $this;
         }
     }
