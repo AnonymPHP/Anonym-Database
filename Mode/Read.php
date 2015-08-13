@@ -86,6 +86,11 @@ class Read extends ModeManager
         return $this;
     }
 
+    /**
+     * İçeriği temizler
+     *
+     * @return static
+     */
     private function cleanThis()
     {
 
