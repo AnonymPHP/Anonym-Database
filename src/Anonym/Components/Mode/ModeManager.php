@@ -142,7 +142,7 @@
 
 
         /**
-         * veleti �a��r�r
+         * Çocuk sınıfını döndürü
          */
         protected function getCield()
         {
@@ -150,6 +150,11 @@
             return $this->chield;
         }
 
+        /**
+         * İçeriği tutar
+         *
+         * @var string
+         */
         protected $string;
 
         /**
