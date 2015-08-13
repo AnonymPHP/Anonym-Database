@@ -98,7 +98,7 @@ class Read extends ModeManager
     }
 
     /**
-     * Order Sorgusu olu�turur
+     * Order Sorgusu oluşturur
      *
      * @param string $order
      * @param string $type
@@ -173,7 +173,7 @@ class Read extends ModeManager
     }
 
     /**
-     * Limit sorgusu olu�turur
+     * Limit sorgusu oluşturur
      *
      * @param string $limit
      * @return \Anonym\Components\Database\Mode\Read
