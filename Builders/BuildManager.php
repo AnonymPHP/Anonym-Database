@@ -8,12 +8,23 @@
     use PDOStatement;
     use Anonym\Components\Database\Base;
 
+    /**
+     * Class BuildManager
+     * @package Anonym\Components\Database\Builders
+     */
+
     class BuildManager
     {
         /**
          * @var \PDO
          */
         protected $connection;
+
+        /**
+         * Query metnini tutar
+         *
+         * @var string
+         */
         private $query;
         private $page;
         private $params = [];
