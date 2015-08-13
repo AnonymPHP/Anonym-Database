@@ -9,6 +9,7 @@
 
     use Anonym\Components\Database\Builders\BuildManager;
     use Anonym\Components\Database\Traits\Builder;
+    use Anonym\Components\Database\Base;
 
     class ModeManager
     {
@@ -18,7 +19,7 @@
         ## Anonym\Components\Database\Base
 
         /**
-         * @var Anonym\Components\Database\Base
+         * @var Base
          */
         private $base;
 
@@ -219,8 +220,8 @@
         /**
          * Where tetiklenir
          *
-         * @param unknown $args
-         * @param unknown $type
+         * @param mixed $args
+         * @param string $type
          */
         private function doWhere($where, $type)
         {
@@ -250,7 +251,7 @@
          * Where  sorgusu
          *
          * @param mixed $where
-         * @param       null controll
+         * @param null controll
          * @return $this
          */
         public function where($where, $controll = null)
@@ -286,7 +287,5 @@
 
             $this->doWhere($where, 'or');
         }
-        /**
-         * @return string
-         */
+
     }
