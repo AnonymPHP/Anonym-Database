@@ -127,6 +127,7 @@ class Read extends ModeManager
     public function page($page)
     {
         $this->page = $page;
+
         $limit = Config::get('db.pagination');
         $limit = $limit['limit'];
         $baslangic = ($page - 1) * ($limit);

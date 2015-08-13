@@ -24,6 +24,12 @@ class Starter
      */
     private $db;
 
+    /**
+     * Ayaları tutar
+     *
+     * @param array $options
+     * @throws \Exception
+     */
     public function __construct($options = [])
     {
 
