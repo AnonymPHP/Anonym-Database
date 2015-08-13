@@ -1,4 +1,6 @@
 <?php
+namespace Anonym\Components\Database\Builds;
+use Anonym\Components\Database\Builders\BuildManager;
 
 /**
  * Bu Dosya AnonymFramework'e ait bir dosyadır.
@@ -7,7 +9,7 @@
  * @see http://gemframework.com
  *
  */
-class InsertBuildManager
+class InsertBuildManager extends BuildManager
 {
 
 }
