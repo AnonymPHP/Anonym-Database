@@ -26,7 +26,19 @@
          * @var string
          */
         private $query;
+
+        /**
+         * Sayfayı tutar
+         *
+         * @var int
+         */
         private $page;
+
+        /**
+         * Gönderilecek parametreleri tutar
+         *
+         * @var array
+         */
         private $params = [];
 
         /**
@@ -43,10 +55,10 @@
         /**
          * Sayfalama olayı için şuan bulunulan sayfayı atar
          *
-         * @param $page
+         * @param int $page
          * @return $this
          */
-        public function setPage($page)
+        public function setPage($page = 0 )
         {
             $this->page = $page;
 
