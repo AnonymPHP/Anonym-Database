@@ -1,86 +1,86 @@
 <?php
 
+/**
+ *  AnonymFramework Veritabanı pdo instance oluşturma sınıfı
+ *
+ * @package Anonym\Components\Database
+ * @author vahitserifsaglam1 <vahit.serif119@gmail.com>
+ * @copyright MyfcYazilim
+ */
+
+namespace Anonym\Components\Database;
+
+use PDO;
+
+/**
+ * Class Starter
+ * @package Anonym\Components\Database
+ */
+class Starter
+{
+
     /**
-     *  AnonymFramework Veritabanı pdo instance oluşturma sınıfı
-     *
-     * @package Anonym\Components\Database
-     * @author vahitserifsaglam1 <vahit.serif119@gmail.com>
-     * @copyright MyfcYazilim
+     * @var \mysqli|pdo
      */
+    private $db;
 
-    namespace Anonym\Components\Database;
-
-    use PDO;
-
-    /**
-     * Class Starter
-     * @package Anonym\Components\Database
-     */
-    class Starter
+    public function __construct($options = [])
     {
 
-        /**
-         * @var \mysqli|pdo
-         */
-        private $db;
+        $host = isset($options['host']) ? $options['host'] : '';
+        $database = isset($options['db']) ? $options['db'] : '';
+        $username = isset($options['username']) ? $options['username'] : '';
+        $password = isset($options['password']) ? $options['password'] : '';
+        $charset = isset($options['charset']) ? $options['charset'] : 'utf8';
 
-        public function __construct($options = [])
-        {
+        if (!isset($options['driver'])) {
+            $driver = 'pdo';
+        } else {
+            $driver = $options['driver'];
+        }
 
-            $host = isset($options['host']) ? $options['host'] : '';
-            $database = isset($options['db']) ? $options['db'] : '';
-            $username = isset($options['username']) ? $options['username'] : '';
-            $password = isset($options['password']) ? $options['password'] : '';
-            $charset = isset($options['charset']) ? $options['charset'] : 'utf8';
+        if (!isset($options['type'])) {
+            $type = 'mysql';
+        } else {
+            $type = $options['type'];
+        }
 
-            if (!isset($options['driver'])) {
-                $driver = 'pdo';
-            } else {
-                $driver = $options['driver'];
-            }
+        switch ($driver) {
 
-            if (!isset($options['type'])) {
-                $type = 'mysql';
-            } else {
-                $type = $options['type'];
-            }
+            case 'pdo':
 
-            switch ($driver) {
+                try {
 
-                case 'pdo':
-
-                    try {
-
-                        $db = new PDO("$type:host=$host;dbname=$database", $username, $password);
-                        $this->db = $db;
-                    } catch (\PDOException $e) {
-
-                        throw new \Exception($e->getMessage());
-                    }
-
-                    break;
-                case 'mysqli':
-
-                    $db = new \mysqli($host, $username, $password, $database);
-
-                    if ($db->connect_errno > 0) {
-                        throw new \Exception('Bağlantı işlemi başarısız ['.$db->connect_error.']');
-                    }
-
+                    $db = new PDO("$type:host=$host;dbname=$database", $username, $password);
                     $this->db = $db;
-                    break;
-            }
+                } catch (\PDOException $e) {
 
-            $this->db->query(sprintf("SET CHARACTER SET %s", $charset));
+                    throw new \Exception($e->getMessage());
+                }
+
+                break;
+            case 'mysqli':
+
+                $db = new \mysqli($host, $username, $password, $database);
+
+                if ($db->connect_errno > 0) {
+                    throw new \Exception('Bağlantı işlemi başarısız [' . $db->connect_error . ']');
+                }
+
+                $this->db = $db;
+                break;
         }
 
-        /**
-         * Veritabanını döndürür
-         *
-         * @return \mysqli
-         */
-        public function getDb()
-        {
-            return $this->db;
-        }
+        $this->db->query(sprintf("SET CHARACTER SET %s", $charset));
     }
+
+    /**
+     * Veritabanını döndürür
+     *
+     * @return \mysqli
+     */
+    public function getDb()
+    {
+        return $this->db;
+    }
+}

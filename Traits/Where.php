@@ -1,66 +1,66 @@
 <?php
 
-    namespace Anonym\Components\Database\Traits;
+namespace Anonym\Components\Database\Traits;
+
+/**
+ * Class Where
+ * @package Anonym\Components\Database\Traits
+ */
+trait Where
+{
 
     /**
-     * Class Where
-     * @package Anonym\Components\Database\Traits
+     * @param array $args
+     * @param string $start
+     * @return mixed
      */
-    trait Where
+    private function databaseStringBuilderWithStart(array $args, $start)
     {
 
-        /**
-         * @param array $args
-         * @param string $start
-         * @return mixed
-         */
-        private function databaseStringBuilderWithStart(array $args, $start)
-        {
+        $s = '';
+        $arr = [];
 
-            $s = '';
-            $arr = [];
+        foreach ($args as $arg) {
 
-            foreach ($args as $arg) {
-
-                $s .= " {$arg[0]} {$arg[1]} ? $start";
-                $arr[] = $arg[2];
-            }
-
-            if (!count($args) === 1) {
-
-                $s = $start.$s;
-            }
-
-            $s = rtrim($s, $start);
-
-            return [
-
-                'content' => $s,
-                'array' => $arr,
-            ];
+            $s .= " {$arg[0]} {$arg[1]} ? $start";
+            $arr[] = $arg[2];
         }
 
-        /**
-         * Set verisi olu�turur
-         *
-         * @param unknown $set
-         * @return multitype:string multitype:array
-         */
-        private function databaseSetBuilder($set)
-        {
+        if (!count($args) === 1) {
 
-            $s = '';
-            $arr = [];
-
-            foreach ($set as $key => $value) {
-                $s .= "$key = ?,";
-                $arr[] = $value;
-            }
-
-            return [
-
-                'content' => rtrim($s, ","),
-                'array' => $arr,
-            ];
+            $s = $start . $s;
         }
+
+        $s = rtrim($s, $start);
+
+        return [
+
+            'content' => $s,
+            'array' => $arr,
+        ];
     }
+
+    /**
+     * Set verisi olu�turur
+     *
+     * @param unknown $set
+     * @return multitype:string multitype:array
+     */
+    private function databaseSetBuilder($set)
+    {
+
+        $s = '';
+        $arr = [];
+
+        foreach ($set as $key => $value) {
+            $s .= "$key = ?,";
+            $arr[] = $value;
+        }
+
+        return [
+
+            'content' => rtrim($s, ","),
+            'array' => $arr,
+        ];
+    }
+}

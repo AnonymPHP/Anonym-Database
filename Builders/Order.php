@@ -1,31 +1,31 @@
 <?php
 
+/**
+ *  AnonymFramework Builders Order Trait -> order sorgular� burada olu�turulur
+ *
+ * @package Anonym\Components\Database\Builders
+ * @author vahitserifsaglam <vahit.serif119@gmail.com>
+ */
+
+namespace Anonym\Components\Database\Builders;
+
+/**
+ * Class Order
+ * @package Anonym\Components\Database\Builders
+ */
+class Order
+{
+
     /**
-     *  AnonymFramework Builders Order Trait -> order sorgular� burada olu�turulur
+     * Order metnini oluşturur
      *
-     * @package Anonym\Components\Database\Builders
-     * @author vahitserifsaglam <vahit.serif119@gmail.com>
+     * @param $id
+     * @param string $type
+     * @return string
      */
-
-    namespace Anonym\Components\Database\Builders;
-
-    /**
-     * Class Order
-     * @package Anonym\Components\Database\Builders
-     */
-    class Order
+    public function order($id, $type = 'DESC')
     {
 
-        /**
-         * Order metnini oluşturur
-         *
-         * @param $id
-         * @param string $type
-         * @return string
-         */
-        public function order($id, $type = 'DESC')
-        {
-
-            return "ORDER BY {$id} {$type}";
-        }
+        return "ORDER BY {$id} {$type}";
     }
+}

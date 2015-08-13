@@ -1,35 +1,34 @@
 <?php
-    /**
-     * Bu sınıf AnonymFrameworkde Database sınıfında join komutları üretmek
-     * için kullanılır
-     * @author vahitserifsaglam <vahit.serif119@gmail.com>
-     */
+/**
+ * Bu sınıf AnonymFrameworkde Database sınıfında join komutları üretmek
+ * için kullanılır
+ * @author vahitserifsaglam <vahit.serif119@gmail.com>
+ */
 
-    namespace Anonym\Components\Database\Builders;
+namespace Anonym\Components\Database\Builders;
+
+/**
+ * Class Join
+ * @package Anonym\Components\Database\Builders
+ */
+class Join
+{
 
     /**
-     * Class Join
-     * @package Anonym\Components\Database\Builders
+     * Join Metnini oluşturur
+     * @param array $join
+     * @param string $table
+     * @return string
      */
-    class Join
+    public function join(array $join = [], $table = '')
     {
+        $string = '';
 
-        /**
-         * Join Metnini oluşturur
-         * @param array  $join
-         * @param string $table
-         * @return string
-         */
-        public function join(array $join = [], $table = '')
-        {
-            $string = '';
-
-            foreach ($join as $type => $value)
-                {
-                    $string .= sprintf("%s %s ON %s.%s = %s.%s",$type, $value[0], $value[0], $value[1],$table, $value[2]);
-                }
-
-            return $string;
+        foreach ($join as $type => $value) {
+            $string .= sprintf("%s %s ON %s.%s = %s.%s", $type, $value[0], $value[0], $value[1], $table, $value[2]);
         }
 
+        return $string;
     }
+
+}

@@ -1,49 +1,48 @@
 <?php
 
+/**
+ *  AnonymFramework Delete Builder -> delete sorgular� haz�rlan�r
+ *
+ * @package  Anonym\Components\Database\Mode;
+ * @author vahitserifsaglam <vahit.serif119@gmail.com>
+ * @copyright (c) 2015, MyfcYazilim
+ */
+
+namespace Anonym\Components\Database\Mode;
+
+use Anonym\Components\Database\Base;
+use Anonym\Components\Database\Builders\Where;
+
+/**
+ * Class Delete
+ * @package Anonym\Components\Database\Mode
+ */
+class Delete extends ModeManager
+{
+
     /**
-     *  AnonymFramework Delete Builder -> delete sorgular� haz�rlan�r
+     * Sınıfı başlatır
      *
-     * @package  Anonym\Components\Database\Mode;
-     * @author vahitserifsaglam <vahit.serif119@gmail.com>
-     * @copyright (c) 2015, MyfcYazilim
+     * @param Base $base
      */
-
-    namespace Anonym\Components\Database\Mode;
-
-    use Anonym\Components\Database\Base;
-    use Anonym\Components\Database\Builders\Where;
-
-    /**
-     * Class Delete
-     * @package Anonym\Components\Database\Mode
-     */
-
-    class Delete extends ModeManager
+    public function __construct(Base $base)
     {
 
-        /**
-         * Sınıfı başlatır
-         *
-         * @param Base $base
-         */
-        public function __construct(Base $base)
-        {
+        $this->setBase($base);
+        $this->useBuilders([
 
-            $this->setBase($base);
-            $this->useBuilders([
+            'where' => new Where(),
+        ]);
 
-               'where' => new Where(),
-            ]);
+        $this->string = [
 
-            $this->string = [
+            'from' => $this->getBase()->getTable(),
+            'where' => null,
+            'parameters' => [],
+        ];
 
-               'from'       => $this->getBase()->getTable(),
-               'where'      => null,
-               'parameters' => [],
-            ];
+        $this->setChield($this);
 
-            $this->setChield($this);
-
-            $this->setChieldPattern('delete');
-        }
+        $this->setChieldPattern('delete');
     }
+}

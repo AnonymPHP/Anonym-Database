@@ -1,30 +1,30 @@
 <?php
 
+/**
+ *  AnonymFramework Group Builder -> group burada oluştururlur
+ *
+ * @package  Anonym\Components\Database\Builders;
+ * @author vahitserifsaglam <vahit.serif119@gmail.com>
+ */
+
+namespace Anonym\Components\Database\Builders;
+
+/**
+ * Class Group
+ * @package Anonym\Components\Database\Builders
+ */
+class Group
+{
+
     /**
-     *  AnonymFramework Group Builder -> group burada oluştururlur
      *
-     * @package  Anonym\Components\Database\Builders;
-     * @author vahitserifsaglam <vahit.serif119@gmail.com>
+     * Grup sorgusunu oluşturur
+     * @param $group
+     * @return string
      */
-
-    namespace Anonym\Components\Database\Builders;
-
-    /**
-     * Class Group
-     * @package Anonym\Components\Database\Builders
-     */
-    class Group
+    public function group($group)
     {
 
-        /**
-         *
-         * Grup sorgusunu oluşturur
-         * @param $group
-         * @return string
-         */
-        public function group($group)
-        {
-
-            return "GROUP BY $group";
-        }
+        return "GROUP BY $group";
     }
+}
