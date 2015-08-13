@@ -22,6 +22,7 @@
          * @var string
          */
         private $table;
+
         /**
          * @var \PDO
          */
@@ -248,4 +249,42 @@
                 return false;
             }
         }
+
+        /**
+         * @return string
+         */
+        public function getTable()
+        {
+            return $this->table;
+        }
+
+        /**
+         * @param string $table
+         * @return BuildManager
+         */
+        public function setTable($table)
+        {
+            $this->table = $table;
+            return $this;
+        }
+
+        /**
+         * @return PDO
+         */
+        public function getConnection()
+        {
+            return $this->connection;
+        }
+
+        /**
+         * @param mixed $connection
+         * @return BuildManager
+         */
+        public function setConnection($connection)
+        {
+            $this->connection = $connection;
+            return $this;
+        }
+
+
     }
