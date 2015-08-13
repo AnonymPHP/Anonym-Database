@@ -15,6 +15,13 @@
 
     class BuildManager
     {
+
+        /**
+         * Seçilen tabloyu tutar
+         *
+         * @var string
+         */
+        private $table;
         /**
          * @var \PDO
          */
