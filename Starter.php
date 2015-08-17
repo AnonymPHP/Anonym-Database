@@ -1,17 +1,20 @@
 <?php
 
 /**
- *  AnonymFramework Veritabanı pdo instance oluşturma sınıfı
+ * This file belongs to the AnoynmFramework
  *
- * @package Anonym\Components\Database
- * @author vahitserifsaglam1 <vahit.serif119@gmail.com>
- * @copyright MyfcYazilim
+ * @author vahitserifsaglam <vahit.serif119@gmail.com>
+ * @see http://gemframework.com
+ *
+ * Thanks for using
  */
+
 
 namespace Anonym\Components\Database;
 use Anonym\Components\Database\Exceptions\ConnectionException;
 use PDO;
 use PDOException;
+use mysqli;
 
 /**
  * Class Starter
@@ -21,14 +24,16 @@ class Starter
 {
 
     /**
-     * @var \mysqli|pdo
+     * the instance of database driver
+     *
+     * @var mysqli|pdo
      */
     private $db;
 
     /**
-     * Ayaları tutar
+     * create a new instance and install the driver
      *
-     * @param array $options
+     * @param array $options the options to db
      * @throws ConnectionException
      */
     public function __construct($options = [])
@@ -53,7 +58,6 @@ class Starter
         }
 
         switch ($driver) {
-
             case 'pdo':
 
                 try {
@@ -68,7 +72,7 @@ class Starter
                 break;
             case 'mysqli':
 
-                $db = new \mysqli($host, $username, $password, $database);
+                $db = new mysqli($host, $username, $password, $database);
 
                 if ($db->connect_errno > 0) {
                     throw new ConnectionException('Bağlantı işlemi başarısız [' . $db->connect_error . ']');
@@ -82,9 +86,9 @@ class Starter
     }
 
     /**
-     * Veritabanını döndürür
+     * return the registered database driver
      *
-     * @return \mysqli
+     * @return mysqli|PDO
      */
     public function getDb()
     {

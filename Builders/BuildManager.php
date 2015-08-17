@@ -2,11 +2,13 @@
 
 namespace Anonym\Components\Database\Builders;
 
+use Anonym\Components\Database\Exceptions\QueryException;
 use Anonym\Components\Database\Helpers\Pagination;
 use mysqli_stmt;
 use PDO;
 use PDOStatement;
 use Anonym\Components\Database\Base;
+use mysqli;
 
 /**
  * Class BuildManager
@@ -95,9 +97,11 @@ class BuildManager
     }
 
     /**
-     * Sorguyu Oluşturur
+     * execute the query
      *
-     * @return PDOStatement
+     * @param $query bool
+     * @throws QueryException
+     * @return PDOStatement|mysql_stmt|bool success on PDOStatement or mysql_stmt, if failure the query return false
      */
     public function run($query = false)
     {
@@ -131,6 +135,18 @@ class BuildManager
             call_user_func_array([$prepare, 'bind_param'], $this->refValues($param_arr));
             $prepare->execute();
 
+        }
+
+        if (false === $prepare) {
+
+            if ($this->connection instanceof PDO) {
+                $message = $this->connection->errorInfo()['message'];
+            }elseif($this->connection instanceof mysqli)
+            {
+                $message = $this->connection->error;
+            }
+
+            throw new QueryException(sprintf('There is an error in your sql query: %s', $message));
         }
 
         return $prepare;
