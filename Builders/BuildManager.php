@@ -2,6 +2,7 @@
 
 namespace Anonym\Components\Database\Builders;
 
+use Anonym\Components\Database\Exceptions\FetchException;
 use Anonym\Components\Database\Exceptions\QueryException;
 use Anonym\Components\Database\Helpers\Pagination;
 use mysqli_stmt;
@@ -113,7 +114,7 @@ class BuildManager
             $prepare = $this->connection->prepare($this->query);
         }
         if ($prepare instanceof PDOStatement) {
-            $prepare->execute($this->params);
+            $execute = $prepare->execute($this->params);
         } elseif ($prepare instanceof mysqli_stmt) {
 
             $s = "";
@@ -133,11 +134,11 @@ class BuildManager
             }
 
             call_user_func_array([$prepare, 'bind_param'], $this->refValues($param_arr));
-            $prepare->execute();
+            $execute = $prepare->execute();
 
         }
 
-        if (false === $prepare) {
+        if (false === $execute) {
 
             if ($this->connection instanceof PDO) {
                 $message = $this->connection->errorInfo()['message'];
@@ -206,7 +207,7 @@ class BuildManager
     /**
      * @param bool|false $fetchAll
      * @return array|mixed|object|\stdClass
-     * @throws \Exception
+     * @throws FetchException
      */
     public function fetch($fetchAll = false)
     {
@@ -230,7 +231,7 @@ class BuildManager
             }
         } else {
 
-            throw new \Exception(sprintf('Girdiğiniz veri tipi geçerli bir query değil. Tip:%s', gettype($query)));
+            throw new FetchException(sprintf('Girdiğiniz veri tipi geçerli bir query değil. Tip:%s', gettype($query)));
         }
     }
 
