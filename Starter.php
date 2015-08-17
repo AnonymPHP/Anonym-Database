@@ -28,7 +28,7 @@ class Starter
      * Ayaları tutar
      *
      * @param array $options
-     * @throws \Exception
+     * @throws ConnectionException
      */
     public function __construct($options = [])
     {
@@ -61,7 +61,7 @@ class Starter
                     $this->db = $db;
                 } catch (\PDOException $e) {
 
-                    throw new \Exception($e->getMessage());
+                    throw new ConnectionException($e->getMessage());
                 }
 
                 break;
