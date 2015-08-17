@@ -132,6 +132,7 @@ class BuildManager
             $prepare->execute();
 
         }
+
         return $prepare;
     }
 
