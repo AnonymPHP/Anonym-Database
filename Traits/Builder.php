@@ -3,15 +3,14 @@
 namespace Anonym\Components\Database\Traits;
 
 /**
- * Class Builder
+ * Trait Builder
  * @package Anonym\Components\Database\Traits
  */
-
 trait Builder
 {
 
     /**
-     * Sorgu olu�turur
+     * create the a sql query
      *
      * @param array $pattern
      * @param array $args

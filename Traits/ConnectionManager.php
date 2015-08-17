@@ -9,6 +9,8 @@
 
 namespace Anonym\Components\Database\Traits;
 
+use PDO;
+use mysqli;
 /**
  * Class ConnectionManager
  * @package Anonym\Components\Database\Traits
@@ -17,18 +19,21 @@ trait ConnectionManager
 {
 
     /**
-     * @var \PDO|\mysqli
+     * the instance of mysql database driver
+     *
+     * @var PDO|mysqli
      */
     private $connection;
+
     /**
-     * Bağlanılan tabloyu tutar
+     * store the connected table name
      *
      * @var string
      */
     private $connectedTable;
 
     /**
-     * Ba�lant� sonland�r�ld�
+     * close the connection
      */
     public function close()
     {
@@ -37,20 +42,21 @@ trait ConnectionManager
     }
 
     /**
-     * Kullan�lacak tabloyu se�er
+     * register the connected table
      *
-     * @param string $table
+     * @param string $table the name of table
+     * @return $this
      */
     public function connect($table)
     {
-
         $this->connectedTable = $table;
+        return $this;
     }
 
     /**
-     * Se�ilen tabloyu d�nd�r�r
+     * get the selected table
      *
-     * @return string
+     * @return string the name of connected table
      */
     public function getTable()
     {
@@ -59,7 +65,9 @@ trait ConnectionManager
     }
 
     /**
-     * @return \PDO
+     * get the instance of database driver
+     *
+     * @return PDO|mysqli
      */
     public function getConnection()
     {

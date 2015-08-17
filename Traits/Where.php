@@ -10,6 +10,7 @@ trait Where
 {
 
     /**
+     *
      * @param array $args
      * @param string $start
      * @return mixed
@@ -41,9 +42,9 @@ trait Where
     }
 
     /**
-     * Set verisi olu�turur
+     * Set verisi oluşturur
      *
-     * @param unknown $set
+     * @param mixed $set
      * @return multitype:string multitype:array
      */
     private function databaseSetBuilder($set)

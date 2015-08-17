@@ -16,7 +16,6 @@ use Anonym\Components\Database\Mode\Update;
 use Anonym\Components\Database\Mode\Insert;
 use Anonym\Components\Database\Traits\ConnectionManager;
 use Anonym\Components\Database\Traits\ModeManager;
-
 /**
  * Class Base
  * @package Anonym\Components\Database
@@ -28,10 +27,10 @@ class Base extends Starter
         ModeManager;
 
     /**
-     * Sınıfı başlatır ve ayarları kullanır
+     * create a new instance and use the configs
      *
      * @param array $configs
-     * @throws \Exception
+     * @throws \Anonym\Components\Database\Exceptions\ConnectionException
      */
     public function __construct(array $configs = [])
     {
