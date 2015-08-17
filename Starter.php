@@ -9,8 +9,9 @@
  */
 
 namespace Anonym\Components\Database;
-
+use Anonym\Components\Database\Exceptions\ConnectionException;
 use PDO;
+use PDOException;
 
 /**
  * Class Starter
@@ -59,7 +60,7 @@ class Starter
 
                     $db = new PDO("$type:host=$host;dbname=$database", $username, $password);
                     $this->db = $db;
-                } catch (\PDOException $e) {
+                } catch (PDOException $e) {
 
                     throw new ConnectionException($e->getMessage());
                 }
@@ -70,7 +71,7 @@ class Starter
                 $db = new \mysqli($host, $username, $password, $database);
 
                 if ($db->connect_errno > 0) {
-                    throw new \Exception('Bağlantı işlemi başarısız [' . $db->connect_error . ']');
+                    throw new ConnectionException('Bağlantı işlemi başarısız [' . $db->connect_error . ']');
                 }
 
                 $this->db = $db;
