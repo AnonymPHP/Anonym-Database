@@ -161,7 +161,9 @@ class BuildManager
      * Sayfalama işlemini yapar
      *  ['url' => 'asdasd/asdasd/:page', 'now' = 0]
      *
+     * @param array $configs
      * @param array $action
+     * @param bool $return
      * @return string
      */
     public function pagination($configs = [], $action = [], $return = true)
