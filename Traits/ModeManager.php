@@ -78,7 +78,7 @@ trait ModeManager
                 sprintf(
                     '%s callable fonksiyonunuzun %s instance\'ine sahip olması gereklidir',
                     $modeName,
-                    'Anonym\Components\Database\Mode\ModeManager'
+                    Mode::class
                 )
             );
         }
