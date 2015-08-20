@@ -138,16 +138,19 @@ class BuildManager
 
         }
 
-        if (false === $execute) {
+        if(isset($execute))
+        {
+            if (false === $execute) {
 
-            if ($this->connection instanceof PDO) {
-                $message = $this->connection->errorInfo()['message'];
-            }elseif($this->connection instanceof mysqli)
-            {
-                $message = $this->connection->error;
+                if ($this->connection instanceof PDO) {
+                    $message = $this->connection->errorInfo()['message'];
+                }elseif($this->connection instanceof mysqli)
+                {
+                    $message = $this->connection->error;
+                }
+
+                throw new QueryException(sprintf('There is an error in your sql query: %s', $message));
             }
-
-            throw new QueryException(sprintf('There is an error in your sql query: %s', $message));
         }
 
         return $prepare;
