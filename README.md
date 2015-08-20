@@ -1,5 +1,7 @@
 # Anonym-Database
-AnonymPHP veritabanı ile ilgili işlemler yapılacak sınıf
+
+
+The Database Component for AnonymFramework.
 
 
 [http://gemframework.com/dokumantasyon/database/gem/](http://gemframework.com/dokumantasyon/database/gem/)
