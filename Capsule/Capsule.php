@@ -10,7 +10,10 @@
 
 namespace Anonym\Components\Database\Capsule;
 
-
+/**
+ * Class Capsule
+ * @package Anonym\Components\Database\Capsule
+ */
 class Capsule
 {
 
