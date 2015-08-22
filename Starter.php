@@ -26,7 +26,7 @@ class Starter
     /**
      * the instance of database driver
      *
-     * @var mysqli|pdo
+     * @var mysqli|PDO
      */
     private $db;
 
