@@ -61,6 +61,22 @@ class Capsule implements ArrayAccess
 
 
     /**
+     * delete a connection in capsule
+     *
+     * @param mixed $offset
+     * @return $this
+     */
+    public function deleteConnection($offset)
+    {
+        if(isset($this->connections[$offset]))
+        {
+            unset($this->connections[$offset]);
+        }
+
+        return $this;
+    }
+
+    /**
      * Whether a offset exists
      * @link http://php.net/manual/en/arrayaccess.offsetexists.php
      * @param mixed $offset <p>
@@ -74,7 +90,7 @@ class Capsule implements ArrayAccess
      */
     public function offsetExists($offset)
     {
-        // TODO: Implement offsetExists() method.
+        return isset($this->connections[$offset]);
     }
 
     /**
@@ -88,7 +104,7 @@ class Capsule implements ArrayAccess
      */
     public function offsetGet($offset)
     {
-        // TODO: Implement offsetGet() method.
+        return $this->connections[$offset];
     }
 
     /**
@@ -105,7 +121,7 @@ class Capsule implements ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        // TODO: Implement offsetSet() method.
+         $this->connections[$offset] = $value;
     }
 
     /**
@@ -119,6 +135,6 @@ class Capsule implements ArrayAccess
      */
     public function offsetUnset($offset)
     {
-        // TODO: Implement offsetUnset() method.
+         $this->deleteConnection($offset);
     }
 }
