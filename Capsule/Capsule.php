@@ -17,4 +17,11 @@ namespace Anonym\Components\Database\Capsule;
 class Capsule
 {
 
+    /**
+     * the story of connections
+     *
+     * @var array
+     */
+    private $connections;
+
 }
