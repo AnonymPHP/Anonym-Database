@@ -11,7 +11,7 @@
 namespace Anonym\Components\Database\Capsule;
 
 
-class CapsuleInterface
+interface CapsuleInterface
 {
 
 }
