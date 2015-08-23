@@ -9,7 +9,7 @@
  */
 
 namespace Anonym\Components\Database\Capsule;
-
+use Exception;
 
 class CapsuleInstanceException
 {
