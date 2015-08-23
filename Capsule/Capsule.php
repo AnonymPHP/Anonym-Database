@@ -10,6 +10,7 @@
 
 namespace Anonym\Components\Database\Capsule;
 
+use Anonym\Components\Database\Base;
 /**
  * Class Capsule
  * @package Anonym\Components\Database\Capsule
@@ -23,5 +24,20 @@ class Capsule
      * @var array
      */
     private $connections;
+
+    /**
+     * create a new instance and add the connection
+     *
+     * @param Base $connection
+     */
+    public function __construct($connection = null)
+    {
+        $this->addConnection($connection);
+    }
+
+    public function addConnection()
+    {
+
+    }
 
 }
