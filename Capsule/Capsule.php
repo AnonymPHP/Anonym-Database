@@ -32,12 +32,19 @@ class Capsule
      * @param Base $connection
      * @param string $name
      */
-    public function __construct($connection = null, $name = '')
+    public function __construct(Base $connection = null, $name = '')
     {
         $this->addConnection($connection, $name);
     }
 
-    public function addConnection($connection = null, $name = '')
+    /**
+     * add a connection to capsule
+     *
+     * @param Base $connection
+     * @param string $name
+     * @throws CapsuleInstanceException
+     */
+    public function addConnection(Base $connection = null, $name = '')
     {
         if($connection instanceof Base)
         {
@@ -48,7 +55,7 @@ class Capsule
                 $this->connections[] = $connection;
             }
         }else{
-
+            throw new CapsuleInstanceException(sprintf('Connection variable must be a instance of %s', Base::class));
         }
     }
 
