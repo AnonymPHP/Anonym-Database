@@ -11,12 +11,12 @@
 namespace Anonym\Components\Database\Capsule;
 
 use Anonym\Components\Database\Base;
-
+use ArrayAccess;
 /**
  * Class Capsule
  * @package Anonym\Components\Database\Capsule
  */
-class Capsule
+class Capsule implements ArrayAccess
 {
 
     /**
@@ -58,5 +58,7 @@ class Capsule
             throw new CapsuleInstanceException(sprintf('Connection variable must be a instance of %s', Base::class));
         }
     }
+
+
 
 }
