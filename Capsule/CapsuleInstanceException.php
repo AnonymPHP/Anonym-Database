@@ -11,6 +11,10 @@
 namespace Anonym\Components\Database\Capsule;
 use Exception;
 
+/**
+ * Class CapsuleInstanceException
+ * @package Anonym\Components\Database\Capsule
+ */
 class CapsuleInstanceException extends Exception
 {
 
