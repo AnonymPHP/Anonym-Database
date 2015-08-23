@@ -11,6 +11,7 @@
 namespace Anonym\Components\Database\Capsule;
 
 use Anonym\Components\Database\Base;
+
 /**
  * Class Capsule
  * @package Anonym\Components\Database\Capsule
@@ -35,7 +36,7 @@ class Capsule
         $this->addConnection($connection);
     }
 
-    public function addConnection()
+    public function addConnection($connection = null)
     {
 
     }
