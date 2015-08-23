@@ -30,18 +30,25 @@ class Capsule
      * create a new instance and add the connection
      *
      * @param Base $connection
-     * @parma string $name
+     * @param string $name
      */
     public function __construct($connection = null, $name = '')
     {
-        $this->addConnection($connection);
+        $this->addConnection($connection, $name);
     }
 
     public function addConnection($connection = null, $name = '')
     {
         if($connection instanceof Base)
         {
-            $this->connections[]
+            if($name !== '')
+            {
+                $this->connections[$name] = $connection;
+            }else{
+                $this->connections[] = $connection;
+            }
+        }else{
+
         }
     }
 
