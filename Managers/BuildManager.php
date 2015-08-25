@@ -121,6 +121,7 @@ class BuildManager
         }
 
         return $prepare;
+    }
 
     /**
      * throw the query exception
