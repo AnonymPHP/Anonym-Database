@@ -274,7 +274,7 @@ class BuildManager
     public function fetch($fetchAll = false)
     {
 
-        $query = $this->run();
+        $query = $this->run(false, true);
 
         if ($query instanceof PDOStatement) {
 
@@ -318,7 +318,7 @@ class BuildManager
     public function rowCount()
     {
 
-        $query = $this->run();
+        $query = $this->run(false, false);
 
         if ($query instanceof PDOStatement) {
             return $query->rowCount();
