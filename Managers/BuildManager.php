@@ -112,7 +112,7 @@ class BuildManager
             return $this->resolveQuery($this->query);
         }
 
-        $resolved = $this->resolvePreparedStatement($this->query, $this->params);
+        list($prepare, $resolved) = $this->resolvePreparedStatement($this->query, $this->params);
 
         if (false === $resolved) {
             if (true === $exception) {
@@ -120,54 +120,7 @@ class BuildManager
             }
         }
 
-        /* if (true === $query) {
-             $query = $this->connection->query($this->query);
-             return $query;
-         } else {
-             $prepare = $this->connection->prepare($this->query);
-         }
-         if ($prepare instanceof PDOStatement) {
-             $execute = $prepare->execute($this->params);
-         } elseif ($prepare instanceof mysqli_stmt) {
-
-             $s = "";
-             foreach ($this->params as $param) {
-
-                 if (is_string($param)) {
-                     $s .= "s";
-                 } elseif (is_integer($param)) {
-                     $s .= "i";
-                 }
-             }
-
-             if (count($this->params) < 1) {
-                 $param_arr = [];
-             } else {
-                 $param_arr = array_merge([$s], $this->params);
-             }
-
-             call_user_func_array([$prepare, 'bind_param'], $this->refValues($param_arr));
-             $execute = $prepare->execute();
-
-         }
-
-         if (isset($execute)) {
-             if (false === $execute) {
-
-                 if ($this->connection instanceof PDO) {
-                     $message = isset($this->connection->errorInfo()['message']) ? $this->connection->errorInfo()['message'] : 'Something Went Wrong!';
-                 } elseif ($this->connection instanceof mysqli) {
-                     $message = $this->connection->error;
-                 }
-
-                 throw new QueryException(sprintf('There is an error in your sql query: %s', $message));
-             }
-         }
-         return $prepare;
-
-        */
-    }
-
+        return $prepare;
 
     /**
      * throw the query exception
@@ -205,7 +158,7 @@ class BuildManager
             $resolved = $this->resolveMysqliPreparedStatement($prepare, $parameters);
         }
 
-        return $resolved;
+        return [$prepare, $resolved];
     }
 
     /**
