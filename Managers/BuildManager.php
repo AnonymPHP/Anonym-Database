@@ -1,6 +1,6 @@
 <?php
 
-namespace Anonym\Components\Database\Builders;
+namespace Anonym\Components\Database\Managers;
 
 use Anonym\Components\Database\Exceptions\FetchException;
 use Anonym\Components\Database\Exceptions\QueryException;

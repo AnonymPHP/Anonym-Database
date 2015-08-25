@@ -17,7 +17,7 @@ use Anonym\Components\Database\Builders\Order;
 use Anonym\Components\Database\Builders\Select;
 use Anonym\Components\Database\Builders\Where;
 use Anonym\Components\Database\Traits\Builder;
-use Anonym\Helpers\Config;
+use Anonym\Facades\Config;
 
 /**
  * Class Read
@@ -133,7 +133,7 @@ class Read extends ModeManager
     {
         $this->page = $page;
 
-        $limit = Config::get('db.pagination');
+        $limit = Config::get('database.pagination');
         $limit = $limit['limit'];
         $baslangic = ($page - 1) * ($limit);
         $bitis = $page * $limit;

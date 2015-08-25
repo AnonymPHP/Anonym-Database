@@ -6,7 +6,7 @@ namespace Anonym\Components\Database\Mode;
  * @author vahitserifsaglam <vahit.serif119@gmail.com>
  */
 
-use Anonym\Components\Database\Builders\BuildManager;
+use Anonym\Components\Database\Managers\BuildManager;
 use Anonym\Components\Database\Traits\Builder;
 use Anonym\Components\Database\Base;
 
@@ -44,7 +44,7 @@ class ModeManager
      */
     private $patterns = [
 
-        'read' => [
+        'read'   => [
 
             'SELECT :select FROM :from :join :group WHERE:where :order :limit',
             'SELECT :select FROM :from :join :group :order :limit'
