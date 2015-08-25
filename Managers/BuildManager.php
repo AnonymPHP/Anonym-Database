@@ -163,6 +163,40 @@ class BuildManager
         */
     }
 
+    /**
+     * resolve the query
+     *
+     * @param string $query
+     * @param array $parameters
+     * @return true or false
+     */
+    private function resolvePreparedStatement($query = '', array $parameters = [])
+    {
+
+        // the instance of database connection
+        $connection = $this->getConnection();
+        $prepare = $connection->prepare($query);
+
+        if ($prepare instanceof PDOStatement) {
+            $resolved = $this->resolvePdoPreparedStatement($prepare, $parameters);
+        } elseif ($prepare instanceof mysqli_stmt) {
+            $resolved = $this->resolveMysqliPreparedStatement($prepare, $parameters);
+        }
+
+
+    }
+
+    /**
+     *
+     *
+     * @param PDOStatement $prepare
+     * @param array $parameters
+     * @return bool
+     */
+    private function resolvePdoPreparedStatement(PDOStatement $prepare, array $parameters = [])
+    {
+        return $prepare->execute($parameters);
+    }
 
     /**
      * run the query
