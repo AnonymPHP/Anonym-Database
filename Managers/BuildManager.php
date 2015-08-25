@@ -187,6 +187,7 @@ class BuildManager
     }
 
     /**
+     * resolve the pdo prepared statement
      *
      *
      * @param PDOStatement $prepare
@@ -198,6 +199,34 @@ class BuildManager
         return $prepare->execute($parameters);
     }
 
+    /**
+     * resolve the mysql prepared statement
+     *
+     * @param mysqli_stmt $prepare
+     * @param array $parameters
+     * @return bool
+     */
+    private function resolveMysqliPreparedStatement(mysqli_stmt $prepare, array $parameters = [])
+    {
+        $s = "";
+        foreach ($parameters as $param) {
+
+            if (is_string($param)) {
+                $s .= "s";
+            } elseif (is_integer($param)) {
+                $s .= "i";
+            }
+        }
+
+        if (count($parameters) < 1) {
+            $paramArray = [];
+        } else {
+            $paramArray = array_merge([$s], $parameters);
+        }
+
+        call_user_func_array([$prepare, 'bind_param'], $this->refValues($paramArray));
+         return $prepare->execute();
+    }
     /**
      * run the query
      *
