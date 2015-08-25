@@ -28,6 +28,12 @@ class ModeManager
     private $builders;
 
     private $chieldPattern;
+
+    /**
+     * the instance of chield
+     *
+     * @var
+     */
     private $chield;
 
     /**
