@@ -138,14 +138,12 @@ class BuildManager
 
         }
 
-        if(isset($execute))
-        {
+        if (isset($execute)) {
             if (false === $execute) {
 
                 if ($this->connection instanceof PDO) {
-                    $message = $this->connection->errorInfo()['message'];
-                }elseif($this->connection instanceof mysqli)
-                {
+                    $message = isset($this->connection->errorInfo()['message']) ? $this->connection->errorInfo()['message'] : 'Something Went Wrong!';
+                } elseif ($this->connection instanceof mysqli) {
                     $message = $this->connection->error;
                 }
 
