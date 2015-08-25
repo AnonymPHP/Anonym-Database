@@ -112,8 +112,13 @@ class BuildManager
             return $this->resolveQuery($this->query);
         }
 
-        $query = $this->resolvePreparedStatement($this->query, $this->params);
+        $resolved = $this->resolvePreparedStatement($this->query, $this->params);
 
+        if (false === $resolved) {
+            if (true === $exception) {
+                $this->resolveQueryException();
+            }
+        }
 
         /* if (true === $query) {
              $query = $this->connection->query($this->query);
@@ -163,6 +168,23 @@ class BuildManager
         */
     }
 
+
+    /**
+     * throw the query exception
+     *
+     * @throws QueryException
+     */
+    private function resolveQueryException()
+    {
+        if ($this->getConnection() instanceof PDO) {
+            $message = isset($this->connection->errorInfo()['message']) ? $this->getConnection()->errorInfo()['message'] : 'Something Went Wrong!';
+        } elseif ($this->getConnection() instanceof mysqli) {
+            $message = $this->getConnection()->error;
+        }
+
+        throw new QueryException($message);
+    }
+
     /**
      * resolve the query
      *
@@ -183,7 +205,7 @@ class BuildManager
             $resolved = $this->resolveMysqliPreparedStatement($prepare, $parameters);
         }
 
-
+        return $resolved;
     }
 
     /**
@@ -225,8 +247,9 @@ class BuildManager
         }
 
         call_user_func_array([$prepare, 'bind_param'], $this->refValues($paramArray));
-         return $prepare->execute();
+        return $prepare->execute();
     }
+
     /**
      * run the query
      *
