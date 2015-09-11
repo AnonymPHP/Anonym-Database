@@ -28,12 +28,22 @@ class Render
     private $pageName;
 
     /**
+     * the instance of pagination class
+     *
+     * @var Paginator
+     */
+    private $paginator;
+
+    /**
      * create a new instance
      *
      * @param array $configs
      */
-    public function __construct(array $configs = [])
+    public function __construct(Paginator $paginator)
     {
+        $this->paginator = $paginator;
+
+        $configs = $paginator->getOptions();
         $this->path = isset($configs['path']) ? $configs['path'] : '';
         $this->pageName = isset($configs['pageName']) ? $configs['pageName'] : 'page';
     }
