@@ -7,6 +7,7 @@ namespace Anonym\Components\Database\Mode;
  */
 
 use Anonym\Components\Database\Managers\BuildManager;
+use Anonym\Components\Database\Pagination\Paginator;
 use Anonym\Components\Database\Traits\Builder;
 use Anonym\Components\Database\Base;
 
