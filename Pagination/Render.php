@@ -78,6 +78,14 @@ class Render
     }
 
     /**
+     * standart render
+     *
+     * @return string
+     */
+    public function standartRende(){
+        return join("\n", $this->standartRendeArray());
+    }
+    /**
      *
      * rende pagination string to array
      *
