@@ -79,7 +79,9 @@ class Paginator extends PaginationFactory
     /**
      * get next page
      *
-     * @return int|null
+     * if current page is null, current page accept 0
+     *
+     * @return int
      */
     public function nextPage(){
         $current = $this->getCurrentPage();
@@ -90,4 +92,14 @@ class Paginator extends PaginationFactory
 
         return $current + 1;
     }
+
+    /**
+     * return per page
+     *
+     * @return int
+     */
+    public function perPage(){
+        return $this->getPerPage();
+    }
 }
+
