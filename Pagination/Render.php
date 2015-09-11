@@ -140,8 +140,11 @@ class Render
         // create fragments string
         $fragments = $this->createFragmentsString($this->paginator->getFragments());
 
+        if ($this->isAvaibleCurrentPage($current) && $current > 1) {
+            $array[] = $this->buildChieldString('Previous', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $previous);
 
-        $this->buildChieldString('Previous', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $previous);
+        }
+
     }
 
     /**
