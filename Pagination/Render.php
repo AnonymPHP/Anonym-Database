@@ -55,8 +55,9 @@ class Render
      * @param array $fragments
      * @return string
      */
-    private function createFragmentsString(array $fragments){
-        return rtrim(join('#', $fragments),"#");
+    private function createFragmentsString(array $fragments)
+    {
+        return rtrim(join('#', $fragments), "#");
     }
 
     /**
@@ -65,17 +66,19 @@ class Render
      * @param array $appends
      * @return string
      */
-    private function createAppendString(array $appends = []){
+    private function createAppendString(array $appends = [])
+    {
 
         if (count($appends)) {
             return http_build_query($appends);
-        }else{
+        } else {
             return '';
         }
 
     }
 
-    public function standartRende(){
+    public function standartRende()
+    {
         $count = $this->paginator->getCount();
 
         // create appends string
@@ -83,7 +86,6 @@ class Render
 
         // create fragments string
         $fragments = $this->createFragmentsString($this->paginator->getFragments());
-
 
 
     }
