@@ -135,30 +135,12 @@ class PaginationFactory
     }
 
     /**
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->Total;
-    }
-
-    /**
-     * @param int $Total
-     * @return PaginationFactory
-     */
-    public function setTotal($Total)
-    {
-        $this->Total = $Total;
-        return $this;
-    }
-
-    /**
      * register maximum Total
      *
      * @param int $total
      * @return PaginationFactory
      */
-    public function total($total = 1)
+    public function count($total = 1)
     {
         return $this->setTotal($total);
     }
