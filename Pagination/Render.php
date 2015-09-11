@@ -57,7 +57,7 @@ class Render
      */
     private function createFragmentsString(array $fragments)
     {
-        return rtrim(join('#', $fragments), "#");
+        return '#'.rtrim(join('#', $fragments), "#");
     }
 
     /**
@@ -138,6 +138,7 @@ class Render
     private function createBeforeButton($current, $url, $class)
     {
 
+
         if ($this->isAvaibleCurrentPage($current) && $current > 1) {
 
             $page = $current - 1;
@@ -178,10 +179,17 @@ class Render
     {
         settype($page, 'string');
 
-        $add = strstr($url, '?') === true ? '&page=' : '?page';
+        $add = $this->buildAddUrl($url);
         return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . $add . $page, $pageName, $page);
     }
 
+    /**
+     * @param $url
+     * @return string
+     */
+    private function buildAddUrl($url){
+        return strstr($url, '?')  ? '&page=' : '?page=';
+    }
 
     /**
      * check validity of current page
