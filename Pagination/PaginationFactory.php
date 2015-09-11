@@ -137,12 +137,30 @@ class PaginationFactory
     /**
      * register maximum Total
      *
-     * @param int $total
+     * @param int $count
      * @return PaginationFactory
      */
-    public function count($total = 1)
+    public function count($count = 1)
     {
-        return $this->setTotal($total);
+        return $this->setCount($count);
+    }
+
+    /**
+     * @return int
+     */
+    public function getCount()
+    {
+        return $this->count;
+    }
+
+    /**
+     * @param int $count
+     * @return PaginationFactory
+     */
+    public function setCount($count)
+    {
+        $this->count = $count;
+        return $this;
     }
 
     /**
