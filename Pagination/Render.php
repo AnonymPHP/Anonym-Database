@@ -120,7 +120,7 @@ class Render
             $array[] = $this->buildChieldString($i, $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $i);
         }
 
-        if (false !== $after = $this->createAfterButton($current, $limit, $url, $count, $fragments)) {
+        if (false !== $after = $this->createAfterButton($current, $limit, $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments)) {
             $array[] = $after;
         }
         return $array;
