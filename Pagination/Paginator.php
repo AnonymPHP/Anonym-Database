@@ -25,7 +25,7 @@ class Paginator extends PaginationFactory
      *
      * @var int
      */
-    protected $mode;
+    protected $mode = 2;
 
 
     /**
