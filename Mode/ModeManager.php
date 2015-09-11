@@ -51,7 +51,7 @@ class ModeManager
      */
     private $patterns = [
 
-        'read'   => [
+        'read' => [
 
             'SELECT :select FROM :from :join :group WHERE:where :order :limit',
             'SELECT :select FROM :from :join :group :order :limit'
@@ -300,14 +300,16 @@ class ModeManager
      * @param int $perPage
      * @return Paginator
      */
-    public function pagination($perPage = 15){
+    public function pagination($perPage = 15)
+    {
 
         $currentPageFinder = Paginator::getCurrentPageFinder();
         $pathFinder = Paginator::getRequestPathFinder();
 
-        $pagination = new Paginator($perPage, $pathFinder() , [
+
+        $pagination = new Paginator($perPage, $currentPageFinder(), [
             'pageName' => 'page',
-            'path' => $currentPageFinder()
+            'path' => $pathFinder()
         ]);
 
         $count = $this->build()->rowCount();
