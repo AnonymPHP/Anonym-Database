@@ -11,7 +11,7 @@
 include 'vendor/autoload.php';
 
 
-$paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, 1, [
+$paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, 2, [
     'path' => 'http://example.com/',
     'pageName' => 'page'
 ]);
