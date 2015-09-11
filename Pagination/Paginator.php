@@ -117,7 +117,7 @@ class Paginator extends PaginationFactory
      */
     public function render()
     {
-        return $this->getRender()->setPaginator($this)->standartRende();
+        return (new Render($this))->setPaginator($this)->standartRende();
     }
 
     /**
@@ -126,7 +126,7 @@ class Paginator extends PaginationFactory
      * @return array
      */
     public function rendeToArray(){
-        $render = $this->getRender()->setPaginator($this);
+        $render = new Render($this);
 
         return $render->standartRendeArray();
     }
@@ -139,7 +139,7 @@ class Paginator extends PaginationFactory
      */
     public function simpleRender()
     {
-        return $this->getRender()->setPaginator($this)->simpleRende();
+        return (new Render($this))->simpleRende();
     }
 
     /**
@@ -148,7 +148,7 @@ class Paginator extends PaginationFactory
      * @return array
      */
     public function simpleRendeToArray(){
-        $render = $this->getRender()->setPaginator($this);
+        $render = new Render($this);
 
         return $render->simpleRendeArray();
     }
