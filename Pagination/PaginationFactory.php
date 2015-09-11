@@ -79,38 +79,20 @@ class PaginationFactory
     /**
      * @return Closure
      */
-    public function getCurrentPageFinder()
+    public static function getCurrentPageFinder()
     {
-        return $this->currentPageFinder;
+        return static::$currentPageFinder;
     }
 
     /**
      * @param Closure $currentPageFinder
-     * @return PaginationFactory
      */
-    public function setCurrentPageFinder($currentPageFinder)
+    public static function setCurrentPageFinder(Closure $currentPageFinder)
     {
-        $this->currentPageFinder = $currentPageFinder;
-        return $this;
+        static::$currentPageFinder = $currentPageFinder;
     }
 
-    /**
-     * @return Closure
-     */
-    public function getRequestPathFinder()
-    {
-        return $this->requestPathFinder;
-    }
 
-    /**
-     * @param Closure $requestPathFinder
-     * @return PaginationFactory
-     */
-    public function setRequestPathFinder($requestPathFinder)
-    {
-        $this->requestPathFinder = $requestPathFinder;
-        return $this;
-    }
 
 
     /**
