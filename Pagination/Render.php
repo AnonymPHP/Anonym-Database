@@ -77,9 +77,11 @@ class Render
 
     }
 
-    public function standartRende()
+    public function standartRendeArray()
     {
+        $array = [];
         $count = $this->paginator->getCount();
+        $url = $this->path;
 
         // create appends string
         $appends = $this->createAppendString($this->paginator->getAppends());
@@ -87,6 +89,20 @@ class Render
         // create fragments string
         $fragments = $this->createFragmentsString($this->paginator->getFragments());
 
+        if ($count < $this->paginator->getPerPage()) {
+            $limit = 1;
+        } else {
+            $limit = ceil($count / $this->paginator->getPerPage());
+        }
+
+        for ($i = $this->paginator->getCurrentPage(); $i <= $limit; $i++) {
+            $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url), $appends, $fragments);
+        }
+    }
+
+
+    public function buildFullChieldString($chield, $appends, $framgents)
+    {
 
     }
 }
