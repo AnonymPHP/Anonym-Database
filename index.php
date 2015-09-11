@@ -18,7 +18,6 @@ $paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, $_GET[
 ]);
 
 $paginator->count(100);
-$paginator->fragment('test');
 
 $render = new \Anonym\Components\Database\Pagination\Render($paginator);
 

@@ -57,7 +57,7 @@ class Render
      */
     private function createFragmentsString(array $fragments)
     {
-        return '#'.rtrim(join('#', $fragments), "#");
+        return count($fragments) ? '#'.rtrim(join('#', $fragments), "#") :'';
     }
 
     /**
@@ -112,15 +112,15 @@ class Render
             $limit = ceil($count / $this->paginator->getPerPage());
         }
 
-        if (false !== $before = $this->createBeforeButton($current, $url, $this->pageName)) {
+        if (false !== $before = $this->createBeforeButton($current, $url, $this->pageName, $fragments)) {
             $array[] = $before;
         }
 
         for ($i = 1; $i <= $limit; $i++) {
-            $array[] = $this->buildChieldString($i, $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments);
+            $array[] = $this->buildChieldString($i, $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $i);
         }
 
-        if (false !== $after = $this->createAfterButton($current, $limit, $url, $count)) {
+        if (false !== $after = $this->createAfterButton($current, $limit, $url, $count, $fragments)) {
             $array[] = $after;
         }
         return $array;
@@ -135,20 +135,21 @@ class Render
      * @param string $class
      * @return bool|string
      */
-    private function createBeforeButton($current, $url, $class)
+    private function createBeforeButton($current, $url, $class, $fragments)
     {
 
 
         if ($this->isAvaibleCurrentPage($current) && $current > 1) {
 
             $page = $current - 1;
-            return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&laquo;");
+
+            return $this->buildChieldString("&laquo;", $url, $class, $fragments, $page);
         } else {
             return false;
         }
     }
 
-    /**
+    /**&raquo;
      * build next button string
      *
      * @param int $current
@@ -157,12 +158,13 @@ class Render
      * @param string $class
      * @return bool|string
      */
-    private function createAfterButton($current, $limit, $url, $class)
+    private function createAfterButton($current, $limit, $url, $class, $fragments)
     {
         if ($this->isAvaibleCurrentPage($current) && $current < $limit) {
 
-            $page = $current + 1;
-            return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&raquo;");
+            $page = $current - 1;
+
+            return $this->buildChieldString("&laquo;", $url, $class, $fragments, $page);
         } else {
             return false;
         }
@@ -175,12 +177,13 @@ class Render
      * @param string $url
      * @return string
      */
-    private function buildChieldString($page, $url, $pageName, $fragments)
+    private function buildChieldString($page, $url, $pageName, $fragments, $i)
     {
         settype($page, 'string');
 
         $add = $this->buildAddUrl($url);
-        return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . $add . $page .$fragments, $pageName, $page);
+        $string = $url . $add . $i .$fragments;
+        return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $string, $pageName, $page);
     }
 
     /**
