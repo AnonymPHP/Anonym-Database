@@ -88,6 +88,7 @@ class Render
         $array = [];
         $count = $this->paginator->getCount();
         $url = $this->path;
+        $current = $this->paginator->getCurrentPage();
 
         // create appends string
         $appends = $this->createAppendString($this->paginator->getAppends());
@@ -101,14 +102,17 @@ class Render
             $limit = ceil($count / $this->paginator->getPerPage());
         }
 
-        if(false !== $before = $this->createBeforeButton()){
-
+        if(false !== $before = $this->createBeforeButton($current, $count)){
+            $array[] = $before;
         }
 
         for ($i = $this->paginator->getCurrentPage(); $i <= $limit; $i++) {
             $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url, $this->pageName), $appends, $fragments);
         }
 
+        if(false !== $after = $this->createAfterButton($current, $count)){
+            $array[] = $after;
+        }
         return $array;
     }
 
