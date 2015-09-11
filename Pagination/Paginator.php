@@ -33,7 +33,7 @@ class Paginator extends PaginationFactory
      * @param null $currentPage
      * @param array $options
      */
-    public function __construct($items, $perPage, $currentPage = null, array $options = [])
+    public function __construct($perPage, $currentPage = null, array $options = [])
     {
         $this->setCurrentPage($currentPage)
             ->setPerPage($perPage)

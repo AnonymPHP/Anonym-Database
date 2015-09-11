@@ -8,11 +8,24 @@
  * Thanks for using
  */
 namespace Anonym\Components\Database\Pagination;
-
+use Closure;
 
 class PaginationFactory
 {
 
+    /**
+     * the closure for find current page
+     *
+     * @var Closure
+     */
+    protected $currentPageFinder;
+
+    /**
+     * the closure for find current request url
+     *
+     * @var Closure
+     */
+    protected $requestPathFinder;
     /**
      * the count of pages
      *
