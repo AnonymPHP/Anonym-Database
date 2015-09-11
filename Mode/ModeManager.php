@@ -309,6 +309,8 @@ class ModeManager
             'pageName' => 'page',
             'path' => $currentPageFinder()
         ]);
+
+        return $pagination;
     }
 
     /**
