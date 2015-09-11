@@ -32,6 +32,13 @@ class PaginationFactory
     protected $options;
 
     /**
+     * pagination datas
+     *
+     * @var mixed
+     */
+    protected $items;
+
+    /**
      * @return int
      */
     public function getPerPage()
@@ -85,4 +92,23 @@ class PaginationFactory
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getİtems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param mixed $items
+     * @return PaginationFactory
+     */
+    public function setİtems($items)
+    {
+        $this->items = $items;
+        return $this;
+    }
+
 }
+
