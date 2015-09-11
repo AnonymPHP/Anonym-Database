@@ -70,7 +70,7 @@ class Render
     {
 
         if (count($appends)) {
-            return http_build_query($appends);
+            return '?' . http_build_query($appends);
         } else {
             return '';
         }
@@ -82,9 +82,11 @@ class Render
      *
      * @return string
      */
-    public function standartRende(){
+    public function standartRende()
+    {
         return join("\n", $this->standartRendeArray());
     }
+
     /**
      *
      * rende pagination string to array
@@ -115,7 +117,7 @@ class Render
         }
 
         for ($i = 1; $i <= $limit; $i++) {
-            $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url, $this->pageName), $appends, $fragments);
+            $array[] = $this->buildChieldString($i, $this->buildFullChieldStrind($url, $appends, $fragments), $this->pageName);
         }
 
         if (false !== $after = $this->createAfterButton($current, $limit, $url, $count)) {
@@ -123,6 +125,7 @@ class Render
         }
         return $array;
     }
+
 
     /**
      * build before button string
@@ -139,7 +142,7 @@ class Render
 
             $page = $current - 1;
             return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&laquo;");
-        }else{
+        } else {
             return false;
         }
     }
@@ -159,7 +162,7 @@ class Render
 
             $page = $current + 1;
             return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&raquo;");
-        }else{
+        } else {
             return false;
         }
     }
@@ -174,7 +177,9 @@ class Render
     private function buildChieldString($page, $url, $pageName)
     {
         settype($page, 'string');
-        return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $pageName, $page);
+
+        $add = strstr($url, '?') === true ? '&page=' : '?page';
+        return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . $add . $page, $pageName, $page);
     }
 
 

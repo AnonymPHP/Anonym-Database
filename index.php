@@ -9,7 +9,8 @@
  */
 
 include 'vendor/autoload.php';
-
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 
 $paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, $_GET['page'], [
     'path' => 'http://localhost/Anonym-Database/index.php',
@@ -17,8 +18,8 @@ $paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, $_GET[
 ]);
 
 $paginator->count(100);
-
+$paginator->appends(['test' => 'aa']);
 
 $render = new \Anonym\Components\Database\Pagination\Render($paginator);
 
-echo join("\n", $render->standartRendeArray());
+var_dump($render->standartRendeArray());
