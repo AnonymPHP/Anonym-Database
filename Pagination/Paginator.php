@@ -38,7 +38,7 @@ class Paginator extends PaginationFactory
             ->setPerPage($perPage)
             ->setOptions($options);
 
-        $this->setRender(new Render($this));
+        $this->setRender(new Render());
     }
 
     /**
@@ -140,14 +140,47 @@ class Paginator extends PaginationFactory
         return $this->getCurrentPage();
     }
 
+    /**
+     * rende the pagination to string
+     *
+     * @return string
+     */
     public function render()
     {
-
+        return $this->getRender()->setPaginator($this)->standartRende();
     }
 
+    /**
+     * rende the pagination to an array
+     *
+     * @return array
+     */
     public function rendeToArray(){
-        $render = new Render($this);
+        $render = $this->getRender()->setPaginator($this);
 
+        return $render->standartRendeArray();
+    }
+
+
+    /**
+     * rende the pagination to string
+     *
+     * @return string
+     */
+    public function simpleRender()
+    {
+        return $this->getRender()->setPaginator($this)->simpleRende();
+    }
+
+    /**
+     * rende the pagination to an array
+     *
+     * @return array
+     */
+    public function simpleRendeToArray(){
+        $render = $this->getRender()->setPaginator($this);
+
+        return $render->simpleRendeArray();
     }
 
 }

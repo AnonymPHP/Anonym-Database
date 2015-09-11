@@ -39,7 +39,7 @@ class Render
      *
      * @param array $configs
      */
-    public function __construct(Paginator $paginator)
+    public function __construct(Paginator $paginator = null)
     {
         $this->paginator = $paginator;
 
@@ -273,4 +273,60 @@ class Render
     {
         return $chield . $appends;
     }
+
+    /**
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * @param string $path
+     * @return Render
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPageName()
+    {
+        return $this->pageName;
+    }
+
+    /**
+     * @param string $pageName
+     * @return Render
+     */
+    public function setPageName($pageName)
+    {
+        $this->pageName = $pageName;
+        return $this;
+    }
+
+    /**
+     * @return Paginator
+     */
+    public function getPaginator()
+    {
+        return $this->paginator;
+    }
+
+    /**
+     * @param Paginator $paginator
+     * @return Render
+     */
+    public function setPaginator($paginator)
+    {
+        $this->paginator = $paginator;
+        return $this;
+    }
+
+
 }
