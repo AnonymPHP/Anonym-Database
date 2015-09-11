@@ -323,6 +323,18 @@ class ModeManager
 
 
     /**
+     * create a paginaton instance and return it
+     *
+     * @param int $perPage
+     * @return Paginator
+     */
+    public function simplePagination($perPage = 15){
+        $pegination = $this->pagination($perPage);
+
+        $pegination->setMode(Paginator::MODE_SIMPLE);
+        return $pegination;
+    }
+    /**
      * OrWhere sorgusu
      *
      * @param mixed $where
