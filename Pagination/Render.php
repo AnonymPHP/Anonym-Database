@@ -48,4 +48,18 @@ class Render
         $this->pageName = isset($configs['pageName']) ? $configs['pageName'] : 'page';
     }
 
+
+    private function createFragmentsString(array $fragments){
+        return rtrim(join('#', $fragments),"#");
+    }
+
+    public function standartRende(){
+        $count = $this->paginator->getCount();
+        $appends = $this->paginator->getAppends();
+        $fragments = $this->paginator->getFragments();
+
+
+
+
+    }
 }
