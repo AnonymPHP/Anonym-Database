@@ -199,6 +199,24 @@ class PaginationFactory
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getFragments()
+    {
+        return $this->fragments;
+    }
+
+    /**
+     * @param array $fragments
+     * @return PaginationFactory
+     */
+    public function setFragments($fragments)
+    {
+        $this->fragments = $fragments;
+        return $this;
+    }
+
 
 
 }
