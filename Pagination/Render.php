@@ -116,6 +116,13 @@ class Render
         return $array;
     }
 
+    private function createBeforeButton($current, $url, $class){
+        if($this->avaibleCurrentPage($current) && $current > 1){
+
+            $page = $current -1;
+            return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>",$url."?page=".$page, $class,"&laquo;");
+        }
+    }
     /**
      * create chield string
      *
@@ -124,7 +131,8 @@ class Render
      * @return string
      */
     private function buildChieldString($page, $url, $pageName){
-        return sprintf("<a href='%s' class='%s'>%d</a>",$url."?page=".$page, $pageName, $page);
+        settype($page, 'string');
+        return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>",$url."?page=".$page, $pageName, $page);
     }
 
     /**
