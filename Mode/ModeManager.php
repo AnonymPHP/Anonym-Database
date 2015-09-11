@@ -301,7 +301,14 @@ class ModeManager
      * @return Paginator
      */
     public function pagination($perPage = 15){
-        $pagination = new Paginator();
+
+        $currentPageFinder = Paginator::getCurrentPageFinder();
+        $pathFinder = Paginator::getRequestPathFinder();
+
+        $pagination = new Paginator($perPage, $pathFinder() , [
+            'pageName' => 'page',
+            'path' => $currentPageFinder()
+        ]);
     }
 
     /**
