@@ -117,7 +117,7 @@ class Render
         }
 
         for ($i = 1; $i <= $limit; $i++) {
-            $array[] = $this->buildChieldString($i, $this->buildFullChieldStrind($url, $appends, $fragments), $this->pageName);
+            $array[] = $this->buildChieldString($i, $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments);
         }
 
         if (false !== $after = $this->createAfterButton($current, $limit, $url, $count)) {
@@ -175,12 +175,12 @@ class Render
      * @param string $url
      * @return string
      */
-    private function buildChieldString($page, $url, $pageName)
+    private function buildChieldString($page, $url, $pageName, $fragments)
     {
         settype($page, 'string');
 
         $add = $this->buildAddUrl($url);
-        return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . $add . $page, $pageName, $page);
+        return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . $add . $page .$fragments, $pageName, $page);
     }
 
     /**
@@ -208,11 +208,10 @@ class Render
      *
      * @param string $chield
      * @param string $appends
-     * @param string $framgents
      * @return string
      */
-    private function buildFullChieldStrind($chield, $appends, $framgents)
+    private function buildFullChieldStrind($chield, $appends)
     {
-        return $chield . $appends . $framgents;
+        return $chield . $appends;
     }
 }
