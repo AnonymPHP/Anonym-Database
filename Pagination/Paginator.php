@@ -164,19 +164,11 @@ class Paginator extends PaginationFactory
      */
     public function rendeToArray(){
         $render = new Render($this);
-
-        return $render->standartRendeArray();
-    }
-
-
-    /**
-     * rende the pagination to string
-     *
-     * @return string
-     */
-    public function simpleRender()
-    {
-        return (new Render($this))->simpleRende();
+        if ($this->getMode() === static::MODE_SIMPLE) {
+            return $render->simpleRendeArray();
+        }else{
+            return $render->standartRendeArray();
+        }
     }
 
     /**
@@ -186,17 +178,6 @@ class Paginator extends PaginationFactory
      */
     public function __toString(){
         return $this->render();
-    }
-
-    /**
-     * rende the pagination to an array
-     *
-     * @return array
-     */
-    public function simpleRendeToArray(){
-        $render = new Render($this);
-
-        return $render->simpleRendeArray();
     }
 
 }
