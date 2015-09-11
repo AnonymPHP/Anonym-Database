@@ -67,6 +67,12 @@ class Render
      */
     private function createAppendString(array $appends = []){
 
+        if (count($appends)) {
+            return http_build_query($appends);
+        }else{
+            return '';
+        }
+
     }
 
     public function standartRende(){
