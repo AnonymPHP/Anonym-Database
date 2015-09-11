@@ -34,7 +34,7 @@ class Render
      */
     public function __construct(array $configs = [])
     {
-        $this->path = isset($configs['path']) ? $configs['path'];
+        $this->path = isset($configs['path']) ? $configs['path'] : '';
         $this->pageName = isset($configs['pageName']) ? $configs['pageName'] : 'page';
     }
 
