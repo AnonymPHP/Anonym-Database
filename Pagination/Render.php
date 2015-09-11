@@ -150,7 +150,7 @@ class Render
 
         if ($this->isAvaibleCurrentPage($current) && $current > 1) {
 
-            $previous = $current -1;
+            $previous = $current - 1;
             $array[] = $this->buildChieldString('Previous', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $previous);
 
         }
