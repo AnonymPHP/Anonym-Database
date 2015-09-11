@@ -122,6 +122,8 @@ class Render
 
             $page = $current - 1;
             return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&laquo;");
+        }else{
+            return false;
         }
     }
 
@@ -139,6 +141,12 @@ class Render
     }
 
 
+    /**
+     * check validity of current page
+     *
+     * @param mixed $current
+     * @return bool
+     */
     private function isAvaibleCurrentPage($current)
     {
         return is_integer($current) && $current > 0 ? true : false;
