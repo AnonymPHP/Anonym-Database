@@ -64,9 +64,14 @@ class Paginator extends PaginationFactory
     }
 
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function fragment($name = '')
     {
-
+        $this->fragments[] = $name;
+        return $this;
     }
 
 }
