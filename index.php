@@ -9,12 +9,9 @@
  */
 
 include 'vendor/autoload.php';
-$base = new \Anonym\Components\Database\Base(
-    [
-        'host'     => 'localhost',
-        'db'       => 'test',
-        'username' => 'root',
-        'password' => ''
-    ]
-);
 
+
+$paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, 1, [
+    'path' => 'http://example.com/',
+    'pageName' => 'page'
+]);
