@@ -101,6 +101,10 @@ class Render
             $limit = ceil($count / $this->paginator->getPerPage());
         }
 
+        if(false !== $before = $this->createBeforeButton()){
+
+        }
+
         for ($i = $this->paginator->getCurrentPage(); $i <= $limit; $i++) {
             $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url, $this->pageName), $appends, $fragments);
         }
