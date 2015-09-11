@@ -35,7 +35,7 @@ class Paginator extends PaginationFactory
      */
     public function __construct($items, $perPage, $currentPage = null, array $options = [])
     {
-            $this->setCurrentPage($currentPage)
+        $this->setCurrentPage($currentPage)
             ->setPerPage($perPage)
             ->setOptions($options);
     }
@@ -47,7 +47,7 @@ class Paginator extends PaginationFactory
      * @param string $expression
      * @return $this
      */
-    public function customUrl($expression  = '')
+    public function customUrl($expression = '')
     {
         $this->setExpression($expression);
         return $this;
@@ -59,7 +59,8 @@ class Paginator extends PaginationFactory
      * @param array $appends
      * @return $this
      */
-    public function appends(array $appends = []){
+    public function appends(array $appends = [])
+    {
         $this->appends = array_merge($this->appends, $appends);
         return $this;
     }
@@ -84,7 +85,8 @@ class Paginator extends PaginationFactory
      *
      * @return int
      */
-    public function nextPage(){
+    public function nextPage()
+    {
         $current = $this->getCurrentPage();
 
         if (!is_int($current)) {
@@ -99,7 +101,8 @@ class Paginator extends PaginationFactory
      *
      * @return int
      */
-    public function perPage(){
+    public function perPage()
+    {
         return $this->getPerPage();
     }
 
@@ -108,11 +111,13 @@ class Paginator extends PaginationFactory
      *
      * @return int|null
      */
-    public function currentPage(){
+    public function currentPage()
+    {
         return $this->getCurrentPage();
     }
 
-    public function render(){
+    public function render()
+    {
 
     }
 
