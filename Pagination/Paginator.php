@@ -101,5 +101,14 @@ class Paginator extends PaginationFactory
     public function perPage(){
         return $this->getPerPage();
     }
+
+    /**
+     * return current page
+     *
+     * @return int|null
+     */
+    public function currentPage(){
+        return $this->getCurrentPage();
+    }
 }
 
