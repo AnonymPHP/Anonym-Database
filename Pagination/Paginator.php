@@ -65,6 +65,8 @@ class Paginator extends PaginationFactory
 
 
     /**
+     * add a new fragment to url
+     *
      * @param string $name
      * @return $this
      */
