@@ -135,6 +135,15 @@ class PaginationFactory
         return $this;
     }
 
-
+    /**
+     * register maximum limit
+     *
+     * @param int $limit
+     * @return PaginationFactory
+     */
+    public function limit($limit = 1)
+    {
+        return $this->setLimit($limit);
+    }
 }
 
