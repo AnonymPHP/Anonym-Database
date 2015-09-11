@@ -55,7 +55,12 @@ class PaginationFactory
     /**
      * @var array
      */
-    protected $appends;
+    protected $appends = [];
+
+    /**
+     * @var array
+     */
+    protected $fragments = [];
 
     /**
      * @return int
