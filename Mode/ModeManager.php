@@ -301,7 +301,7 @@ class ModeManager
      * @return Paginator
      */
     public function pagination($perPage = 15){
-
+        $pagination = new Paginator();
     }
 
     /**
