@@ -102,7 +102,7 @@ class Render
             $limit = ceil($count / $this->paginator->getPerPage());
         }
 
-        if (false !== $before = $this->createBeforeButton($current, $count)) {
+        if (false !== $before = $this->createBeforeButton($current, $url, $this->pageName)) {
             $array[] = $before;
         }
 
