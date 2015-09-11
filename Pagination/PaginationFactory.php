@@ -13,6 +13,13 @@ class PaginationFactory
 {
 
     /**
+     * the limit of pages
+     *
+     * @var int
+     */
+    protected $limit;
+
+    /**
      * @var int
      */
     protected $perPage;
@@ -109,6 +116,25 @@ class PaginationFactory
         $this->items = $items;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getLimit()
+    {
+        return $this->limit;
+    }
+
+    /**
+     * @param int $limit
+     * @return PaginationFactory
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = $limit;
+        return $this;
+    }
+
 
 }
 

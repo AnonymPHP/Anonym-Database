@@ -39,4 +39,5 @@ class Paginator extends PaginationFactory
             ->setOptions($options);
     }
 
+
 }
