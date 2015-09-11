@@ -13,4 +13,23 @@ namespace Anonym\Components\Database\Pagination;
 class Render
 {
 
+    /**
+     * the path of urls
+     *
+     * @var string
+     */
+    private $path;
+
+    /**
+     * the name of page
+     *
+     * @var string
+     */
+    private $pageName;
+
+    public function __construct()
+    {
+
+    }
+
 }
