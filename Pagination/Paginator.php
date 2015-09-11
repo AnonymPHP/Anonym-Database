@@ -111,4 +111,8 @@ class Paginator extends PaginationFactory
         return $this->getCurrentPage();
     }
 
+    public function render(){
+
+    }
+
 }
