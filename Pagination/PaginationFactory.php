@@ -18,14 +18,14 @@ class PaginationFactory
      *
      * @var Closure
      */
-    protected $currentPageFinder;
+    protected static $currentPageFinder;
 
     /**
      * the closure for find current request url
      *
      * @var Closure
      */
-    protected $requestPathFinder;
+    protected static $requestPathFinder;
     /**
      * the count of pages
      *
@@ -75,6 +75,22 @@ class PaginationFactory
      * @var array
      */
     protected $fragments = [];
+
+    /**
+     * @return Closure
+     */
+    public static function getRequestPathFinder()
+    {
+        return self::$requestPathFinder;
+    }
+
+    /**
+     * @param Closure $requestPathFinder
+     */
+    public static function setRequestPathFinder($requestPathFinder)
+    {
+        self::$requestPathFinder = $requestPathFinder;
+    }
 
     /**
      * @return Closure
