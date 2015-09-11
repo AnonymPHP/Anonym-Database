@@ -57,7 +57,7 @@ class Render
      */
     private function createFragmentsString(array $fragments)
     {
-        return count($fragments) ? '#'.rtrim(join('#', $fragments), "#") :'';
+        return count($fragments) ? '#' . rtrim(join('#', $fragments), "#") : '';
     }
 
     /**
@@ -127,13 +127,21 @@ class Render
     }
 
 
-    public function simpleRendeArray(){
+    public function simpleRendeArray()
+    {
         $array = [];
         $count = $this->paginator->getCount();
         $url = $this->path;
         $current = $this->paginator->getCurrentPage();
 
-        if(false !== $before = $this->buildChieldString('Previous', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $previous));
+        // create appends string
+        $appends = $this->createAppendString($this->paginator->getAppends());
+
+        // create fragments string
+        $fragments = $this->createFragmentsString($this->paginator->getFragments());
+
+
+        $this->buildChieldString('Previous', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $previous);
     }
 
     /**
@@ -191,7 +199,7 @@ class Render
         settype($page, 'string');
 
         $add = $this->buildAddUrl($url);
-        $string = $url . $add . $i .$fragments;
+        $string = $url . $add . $i . $fragments;
         return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $string, $pageName, $page);
     }
 
@@ -199,8 +207,9 @@ class Render
      * @param $url
      * @return string
      */
-    private function buildAddUrl($url){
-        return strstr($url, '?')  ? '&page=' : '?page=';
+    private function buildAddUrl($url)
+    {
+        return strstr($url, '?') ? '&page=' : '?page=';
     }
 
     /**
