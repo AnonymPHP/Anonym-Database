@@ -112,7 +112,7 @@ class Render
             $limit = ceil($count / $this->paginator->getPerPage());
         }
 
-        if (false !== $before = $this->createBeforeButton($current, $url, $this->pageName, $fragments)) {
+        if (false !== $before = $this->createBeforeButton($current, $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments)) {
             $array[] = $before;
         }
 
@@ -126,6 +126,15 @@ class Render
         return $array;
     }
 
+
+    public function simpleRendeArray(){
+        $array = [];
+        $count = $this->paginator->getCount();
+        $url = $this->path;
+        $current = $this->paginator->getCurrentPage();
+
+        if(false !== $before = $this->buildChieldString('Previous', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $previous));
+    }
 
     /**
      * build before button string
