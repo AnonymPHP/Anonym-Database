@@ -126,10 +126,11 @@ class Render
      */
     private function createBeforeButton($current, $url, $class)
     {
+
         if ($this->isAvaibleCurrentPage($current) && $current > 1) {
 
             $page = $current - 1;
-            return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&laquo;");
+            return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&laquo;");
         }else{
             return false;
         }
@@ -149,7 +150,7 @@ class Render
         if ($this->isAvaibleCurrentPage($current) && $current < $limit) {
 
             $page = $current + 1;
-            return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&raquo;");
+            return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&raquo;");
         }else{
             return false;
         }
@@ -165,7 +166,7 @@ class Render
     private function buildChieldString($page, $url, $pageName)
     {
         settype($page, 'string');
-        return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $pageName, $page);
+        return sprintf("<li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $pageName, $page);
     }
 
 
@@ -177,6 +178,7 @@ class Render
      */
     private function isAvaibleCurrentPage($current)
     {
+        settype($current, 'integer');
         return is_integer($current) && $current > 0 ? true : false;
     }
 

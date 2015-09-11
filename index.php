@@ -11,12 +11,14 @@
 include 'vendor/autoload.php';
 
 
-$paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, 2, [
-    'path' => 'http://example.com/',
+$paginator = new \Anonym\Components\Database\Pagination\Paginator([], 15, $_GET['page'], [
+    'path' => 'http://localhost/Anonym-Database/index.php',
     'pageName' => 'page'
 ]);
+
+$paginator->count(100);
 
 
 $render = new \Anonym\Components\Database\Pagination\Render($paginator);
 
-var_dump($render->standartRendeArray());
+echo join("\n", $render->standartRendeArray());
