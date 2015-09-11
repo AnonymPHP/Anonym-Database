@@ -110,18 +110,46 @@ class Render
             $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url, $this->pageName), $appends, $fragments);
         }
 
-        if (false !== $after = $this->createAfterButton($current, $count)) {
+        if (false !== $after = $this->createAfterButton($current, $limit, $url, $count)) {
             $array[] = $after;
         }
         return $array;
     }
 
+    /**
+     * build before button string
+     *
+     * @param int $current
+     * @param string $url
+     * @param string $class
+     * @return bool|string
+     */
     private function createBeforeButton($current, $url, $class)
     {
         if ($this->isAvaibleCurrentPage($current) && $current > 1) {
 
             $page = $current - 1;
             return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&laquo;");
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * build next button string
+     *
+     * @param int $current
+     * @param int $limit
+     * @param string $url
+     * @param string $class
+     * @return bool|string
+     */
+    private function createAfterButton($current, $limit, $url, $class)
+    {
+        if ($this->isAvaibleCurrentPage($current) && $current < $limit) {
+
+            $page = $current + 1;
+            return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&raquo;");
         }else{
             return false;
         }
