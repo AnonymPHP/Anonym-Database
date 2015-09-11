@@ -153,6 +153,24 @@ class PaginationFactory
         return $this->setLimit($limit);
     }
 
+    /**
+     * @return string
+     */
+    public function getExpression()
+    {
+        return $this->expression;
+    }
+
+    /**
+     * @param string $expression
+     * @return PaginationFactory
+     */
+    public function setExpression($expression)
+    {
+        $this->expression = $expression;
+        return $this;
+    }
+
 
 }
 
