@@ -128,6 +128,11 @@ class Render
     }
 
 
+    /**
+     * create pagination with only previous and next buttons
+     *
+     * @return array
+     */
     public function simpleRendeArray()
     {
         $array = [];
@@ -165,8 +170,16 @@ class Render
         return $array;
     }
 
-    public function simpleRende(){
 
+    /**
+     * create pagination with only previous and next buttons
+     *
+     * @return string
+     */
+    public function simpleRende(){
+        $array = $this->simpleRendeArray();
+
+        return count($array) ? join("\n", $array);
     }
 
     /**
