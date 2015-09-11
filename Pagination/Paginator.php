@@ -76,4 +76,18 @@ class Paginator extends PaginationFactory
         return $this;
     }
 
+    /**
+     * get next page
+     *
+     * @return int|null
+     */
+    public function nextPage(){
+        $current = $this->getCurrentPage();
+
+        if (!is_int($current)) {
+            $current = 0;
+        }
+
+        return $current + 1;
+    }
 }
