@@ -77,6 +77,12 @@ class Render
 
     }
 
+    /**
+     *
+     * rende pagination string to array
+     *
+     * @return array
+     */
     public function standartRendeArray()
     {
         $array = [];
@@ -101,6 +107,11 @@ class Render
     }
 
 
+    /**
+     * @param string $chield
+     * @param string $appends
+     * @param string $framgents
+     */
     public function buildFullChieldString($chield, $appends, $framgents)
     {
 
