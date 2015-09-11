@@ -106,14 +106,27 @@ class Render
         }
     }
 
+    /**
+     * create chield string
+     *
+     * @param string $page
+     * @param string $url
+     * @return string
+     */
+    private function buildChieldString($page, $url){
+        return $url."?page=".$page;
+    }
 
     /**
+     * create full chield string
+     *
      * @param string $chield
      * @param string $appends
      * @param string $framgents
+     * @return string
      */
-    public function buildFullChieldString($chield, $appends, $framgents)
+    private function buildFullChieldStrind($chield, $appends, $framgents)
     {
-
+        return $chield.$appends.$framgents;
     }
 }
