@@ -64,4 +64,9 @@ class Paginator extends PaginationFactory
     }
 
 
+    public function fragment($name = '')
+    {
+
+    }
+
 }
