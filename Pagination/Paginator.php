@@ -112,4 +112,11 @@ class Paginator extends PaginationFactory
     }
 
 
+    public function hasMore(){
+
+    }
+
+    public function lessMore(){
+
+    }
 }

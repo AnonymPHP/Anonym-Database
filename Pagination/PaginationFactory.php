@@ -13,11 +13,11 @@ class PaginationFactory
 {
 
     /**
-     * the limit of pages
+     * the Total of pages
      *
      * @var int
      */
-    protected $limit;
+    protected $total;
 
     /**
      * the expression of url
@@ -137,30 +137,30 @@ class PaginationFactory
     /**
      * @return int
      */
-    public function getLimit()
+    public function getTotal()
     {
-        return $this->limit;
+        return $this->Total;
     }
 
     /**
-     * @param int $limit
+     * @param int $Total
      * @return PaginationFactory
      */
-    public function setLimit($limit)
+    public function setTotal($Total)
     {
-        $this->limit = $limit;
+        $this->Total = $Total;
         return $this;
     }
 
     /**
-     * register maximum limit
+     * register maximum Total
      *
-     * @param int $limit
+     * @param int $total
      * @return PaginationFactory
      */
-    public function limit($limit = 1)
+    public function total($total = 1)
     {
-        return $this->setLimit($limit);
+        return $this->setTotal($total);
     }
 
     /**
