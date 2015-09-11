@@ -237,36 +237,6 @@ class BuildManager
     }
 
     /**
-     * Sayfalama işlemini yapar
-     *  ['url' => 'asdasd/asdasd/:page', 'now' = 0]
-     *
-     * @param array $configs
-     * @param array $action
-     * @param bool $return
-     * @return string
-     */
-    public function pagination($configs = [], $action = [], $return = true)
-    {
-
-        if (!is_array($action)) {
-            $action = [
-                'url' => $action,
-                'now' => $this->page,
-            ];
-        }
-        $pagination = new Pagination($configs);
-        $pagination->setCount($this->run()->rowCount());
-        $paginate = $pagination->paginate($action);
-
-        if (!$return) {
-            echo $paginate;
-        } else {
-            return $paginate;
-
-        }
-    }
-
-    /**
      * @param bool|false $fetchAll
      * @return array|mixed|object|\stdClass
      * @throws FetchException
