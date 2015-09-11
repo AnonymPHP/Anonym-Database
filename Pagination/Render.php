@@ -102,7 +102,7 @@ class Render
             $limit = ceil($count / $this->paginator->getPerPage());
         }
 
-        if(false !== $before = $this->createBeforeButton($current, $count)){
+        if (false !== $before = $this->createBeforeButton($current, $count)) {
             $array[] = $before;
         }
 
@@ -110,19 +110,21 @@ class Render
             $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url, $this->pageName), $appends, $fragments);
         }
 
-        if(false !== $after = $this->createAfterButton($current, $count)){
+        if (false !== $after = $this->createAfterButton($current, $count)) {
             $array[] = $after;
         }
         return $array;
     }
 
-    private function createBeforeButton($current, $url, $class){
-        if($this->avaibleCurrentPage($current) && $current > 1){
+    private function createBeforeButton($current, $url, $class)
+    {
+        if ($this->isAvaibleCurrentPage($current) && $current > 1) {
 
-            $page = $current -1;
-            return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>",$url."?page=".$page, $class,"&laquo;");
+            $page = $current - 1;
+            return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $class, "&laquo;");
         }
     }
+
     /**
      * create chield string
      *
@@ -130,9 +132,16 @@ class Render
      * @param string $url
      * @return string
      */
-    private function buildChieldString($page, $url, $pageName){
+    private function buildChieldString($page, $url, $pageName)
+    {
         settype($page, 'string');
-        return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>",$url."?page=".$page, $pageName, $page);
+        return sprintf("<li></li><a href='%s' class='%s'>%s</a></li>", $url . "?page=" . $page, $pageName, $page);
+    }
+
+
+    private function isAvaibleCurrentPage($current)
+    {
+        return is_integer($current) && $current > 0 ? true : false;
     }
 
     /**
@@ -145,6 +154,6 @@ class Render
      */
     private function buildFullChieldStrind($chield, $appends, $framgents)
     {
-        return $chield.$appends.$framgents;
+        return $chield . $appends . $framgents;
     }
 }
