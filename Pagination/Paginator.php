@@ -17,13 +17,12 @@ namespace Anonym\Components\Database\Pagination;
 class Paginator extends PaginationFactory
 {
 
-
     /**
-     * determine if there are more page in datas
+     * the instance of pagination render
      *
-     * @var int
+     * @var Render
      */
-    protected $hasMore;
+    protected $render;
 
     /**
      * create a new instance and register options and more variables
@@ -38,7 +37,32 @@ class Paginator extends PaginationFactory
         $this->setCurrentPage($currentPage)
             ->setPerPage($perPage)
             ->setOptions($options);
+
+        $this->setRender(new Render($this));
     }
+
+    /**
+     * return registered render instance
+     *
+     * @return Render
+     */
+    public function getRender()
+    {
+        return $this->render;
+    }
+
+    /**
+     * register the pagination render
+     *
+     * @param Render $render
+     * @return Paginator
+     */
+    public function setRender(Render $render)
+    {
+        $this->render = $render;
+        return $this;
+    }
+
 
 
     /**
@@ -118,6 +142,11 @@ class Paginator extends PaginationFactory
 
     public function render()
     {
+
+    }
+
+    public function rendeToArray(){
+        $render = new Render($this);
 
     }
 
