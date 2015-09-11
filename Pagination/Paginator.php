@@ -52,5 +52,16 @@ class Paginator extends PaginationFactory
         return $this;
     }
 
+    /**
+     * get all appends
+     *
+     * @param array $appends
+     * @return $this
+     */
+    public function appends(array $appends = []){
+        $this->appends = array_merge($this->appends, $appends);
+        return $this;
+    }
+
 
 }
