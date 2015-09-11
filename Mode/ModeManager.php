@@ -296,6 +296,14 @@ class ModeManager
     }
 
     /**
+     * @param int $perPage
+     * @return Paginator
+     */
+    public function pagination($perPage = 15){
+
+    }
+
+    /**
      * OrWhere sorgusu
      *
      * @param mixed $where
