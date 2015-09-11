@@ -20,6 +20,13 @@ class PaginationFactory
     protected $limit;
 
     /**
+     * the expression of url
+     *
+     * @var string
+     */
+    protected $expression;
+
+    /**
      * @var int
      */
     protected $perPage;
@@ -145,5 +152,7 @@ class PaginationFactory
     {
         return $this->setLimit($limit);
     }
+
+
 }
 
