@@ -310,6 +310,10 @@ class ModeManager
             'path' => $currentPageFinder()
         ]);
 
+        $count = $this->build()->rowCount();
+
+        $pagination->count($count);
+
         return $pagination;
     }
 
