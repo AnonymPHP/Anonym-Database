@@ -77,6 +77,43 @@ class PaginationFactory
     protected $fragments = [];
 
     /**
+     * @return Closure
+     */
+    public function getCurrentPageFinder()
+    {
+        return $this->currentPageFinder;
+    }
+
+    /**
+     * @param Closure $currentPageFinder
+     * @return PaginationFactory
+     */
+    public function setCurrentPageFinder($currentPageFinder)
+    {
+        $this->currentPageFinder = $currentPageFinder;
+        return $this;
+    }
+
+    /**
+     * @return Closure
+     */
+    public function getRequestPathFinder()
+    {
+        return $this->requestPathFinder;
+    }
+
+    /**
+     * @param Closure $requestPathFinder
+     * @return PaginationFactory
+     */
+    public function setRequestPathFinder($requestPathFinder)
+    {
+        $this->requestPathFinder = $requestPathFinder;
+        return $this;
+    }
+
+
+    /**
      * @return int
      */
     public function getPerPage()
