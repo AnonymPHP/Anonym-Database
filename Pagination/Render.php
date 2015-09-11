@@ -104,6 +104,8 @@ class Render
         for ($i = $this->paginator->getCurrentPage(); $i <= $limit; $i++) {
             $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url), $appends, $fragments);
         }
+
+        return $array;
     }
 
     /**
