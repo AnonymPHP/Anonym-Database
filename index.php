@@ -21,4 +21,4 @@ $paginator->count(100);
 
 $render = new \Anonym\Components\Database\Pagination\Render($paginator);
 
-var_dump($render->standartRendeArray());
+var_dump($render->simpleRendeArray());

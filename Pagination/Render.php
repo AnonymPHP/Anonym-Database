@@ -84,7 +84,8 @@ class Render
      */
     public function standartRende()
     {
-        return join("\n", $this->standartRendeArray());
+        $array = $this->standartRendeArray();
+        return  count($array) ? join("\n", $array) : '';
     }
 
     /**
@@ -155,12 +156,17 @@ class Render
 
         }
 
-
         if ($this->isAvaibleCurrentPage($current) && $current < $limit) {
             $next = $current + 1;
 
             $array[] = $this->buildChieldString('Next', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $next);
         }
+
+        return $array;
+    }
+
+    public function simpleRende(){
+
     }
 
     /**
