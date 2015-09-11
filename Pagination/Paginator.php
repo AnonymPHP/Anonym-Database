@@ -16,7 +16,6 @@ class Paginator extends PaginationFactory
 {
 
 
-
     /**
      * determine if there are more page in datas
      *
@@ -32,8 +31,12 @@ class Paginator extends PaginationFactory
      * @param null $currentPage
      * @param array $options
      */
-    public function __construct($items, $perPage, $currentPage = null, array $options = []){
-
+    public function __construct($items, $perPage, $currentPage = null, array $options = [])
+    {
+        $this->setItems($items)
+            ->setCurrentPage($currentPage)
+            ->setPerPage($perPage)
+            ->setOptions($options);
     }
 
 }

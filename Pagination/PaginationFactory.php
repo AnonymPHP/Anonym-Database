@@ -95,7 +95,7 @@ class PaginationFactory
     /**
      * @return mixed
      */
-    public function getİtems()
+    public function getItems()
     {
         return $this->items;
     }
@@ -104,7 +104,7 @@ class PaginationFactory
      * @param mixed $items
      * @return PaginationFactory
      */
-    public function setİtems($items)
+    public function setItems($items)
     {
         $this->items = $items;
         return $this;
