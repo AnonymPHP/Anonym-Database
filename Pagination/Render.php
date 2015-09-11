@@ -179,7 +179,7 @@ class Render
     public function simpleRende(){
         $array = $this->simpleRendeArray();
 
-        return count($array) ? join("\n", $array);
+        return count($array) ? join("\n", $array) : '';
     }
 
     /**
