@@ -49,8 +49,24 @@ class Render
     }
 
 
+    /**
+     * create fragment string
+     *
+     * @param array $fragments
+     * @return string
+     */
     private function createFragmentsString(array $fragments){
         return rtrim(join('#', $fragments),"#");
+    }
+
+    /**
+     * create append string
+     *
+     * @param array $appends
+     * @return string
+     */
+    private function createAppendString(array $appends = []){
+
     }
 
     public function standartRende(){
