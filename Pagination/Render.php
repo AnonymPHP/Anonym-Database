@@ -27,9 +27,15 @@ class Render
      */
     private $pageName;
 
-    public function __construct()
+    /**
+     * create a new instance
+     *
+     * @param array $configs
+     */
+    public function __construct(array $configs = [])
     {
-
+        $this->path = isset($configs['path']) ? $configs['path'];
+        $this->pageName = isset($configs['pageName']) ? $configs['pageName'] : 'page';
     }
 
 }
