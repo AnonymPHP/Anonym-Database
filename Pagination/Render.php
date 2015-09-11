@@ -102,7 +102,7 @@ class Render
         }
 
         for ($i = $this->paginator->getCurrentPage(); $i <= $limit; $i++) {
-            $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url), $appends, $fragments);
+            $array[] = $this->buildFullChieldStrind($this->buildChieldString($i, $url, $this->pageName), $appends, $fragments);
         }
 
         return $array;
@@ -115,8 +115,8 @@ class Render
      * @param string $url
      * @return string
      */
-    private function buildChieldString($page, $url){
-        return $url."?page=".$page;
+    private function buildChieldString($page, $url, $pageName){
+        return sprintf("<a href='%s' class='%s'>%d</a>",$url."?page=".$page, $pageName, $page);
     }
 
     /**
