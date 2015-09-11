@@ -155,6 +155,12 @@ class Render
 
         }
 
+
+        if ($this->isAvaibleCurrentPage($current) && $current < $limit) {
+            $next = $current + 1;
+
+            $array[] = $this->buildChieldString('Next', $this->buildFullChieldStrind($url, $appends), $this->pageName, $fragments, $next);
+        }
     }
 
     /**
