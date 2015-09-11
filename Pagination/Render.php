@@ -77,7 +77,7 @@ class Render
 
     public function standartRende(){
         $count = $this->paginator->getCount();
-        $appends = $this->paginator->getAppends();
+        $appends = $this->createAppendString($this->paginator->getAppends());
         $fragments = $this->createFragmentsString($this->paginator->getFragments());
 
 
