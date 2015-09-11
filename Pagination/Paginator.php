@@ -17,6 +17,16 @@ namespace Anonym\Components\Database\Pagination;
 class Paginator extends PaginationFactory
 {
 
+    const MODE_STANDART = 1;
+    const MODE_SIMPLE = 2;
+
+    /**
+     * the mode of pagination
+     *
+     * @var int
+     */
+    protected $mode;
+
 
     /**
      * create a new instance and register options and more variables
@@ -111,13 +121,40 @@ class Paginator extends PaginationFactory
     }
 
     /**
+     * @return int
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * @param int $mode
+     * @return Paginator
+     */
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+        return $this;
+    }
+
+
+
+    /**
      * rende the pagination to string
      *
      * @return string
      */
     public function render()
     {
-        return (new Render($this))->setPaginator($this)->standartRende();
+
+        $render = new Render($this);
+        if ($this->getMode() === static::MODE_SIMPLE) {
+            return $render->simpleRende();
+        }else{
+            return $render->standartRende();
+        }
+
     }
 
     /**
@@ -140,6 +177,15 @@ class Paginator extends PaginationFactory
     public function simpleRender()
     {
         return (new Render($this))->simpleRende();
+    }
+
+    /**
+     * create a string
+     *
+     * @return string
+     */
+    public function __toString(){
+        return $this->render();
     }
 
     /**

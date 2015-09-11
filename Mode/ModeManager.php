@@ -297,6 +297,8 @@ class ModeManager
     }
 
     /**
+     * create a instance for standart pagination
+     *
      * @param int $perPage
      * @return Paginator
      */
@@ -318,6 +320,7 @@ class ModeManager
 
         return $pagination;
     }
+
 
     /**
      * OrWhere sorgusu
