@@ -53,6 +53,11 @@ class PaginationFactory
     protected $items;
 
     /**
+     * @var array
+     */
+    protected $appends;
+
+    /**
      * @return int
      */
     public function getPerPage()
@@ -170,6 +175,25 @@ class PaginationFactory
         $this->expression = $expression;
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function getAppends()
+    {
+        return $this->appends;
+    }
+
+    /**
+     * @param array $appends
+     * @return PaginationFactory
+     */
+    public function setAppends($appends)
+    {
+        $this->appends = $appends;
+        return $this;
+    }
+
 
 
 }

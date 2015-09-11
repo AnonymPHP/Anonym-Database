@@ -40,6 +40,17 @@ class Paginator extends PaginationFactory
     }
 
 
+    /**
+     * register the url pattern
+     *
+     * @param string $expression
+     * @return $this
+     */
+    public function customUrl($expression  = '')
+    {
+        $this->setExpression($expression);
+        return $this;
+    }
 
 
 }
