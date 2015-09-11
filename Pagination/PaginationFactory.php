@@ -13,11 +13,11 @@ class PaginationFactory
 {
 
     /**
-     * the Total of pages
+     * the count of pages
      *
      * @var int
      */
-    protected $total;
+    protected $count;
 
     /**
      * the expression of url

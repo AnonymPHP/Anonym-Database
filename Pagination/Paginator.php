@@ -111,12 +111,4 @@ class Paginator extends PaginationFactory
         return $this->getCurrentPage();
     }
 
-
-    public function hasMore(){
-
-    }
-
-    public function lessMore(){
-
-    }
 }
