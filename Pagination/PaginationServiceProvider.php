@@ -40,7 +40,7 @@ class PaginationServiceProvider extends ServiceProvider
             }
         });
 
-        $request = $this->make('http.request');
+        $request = App::make('http.request');
         Paginator::setRequestPathFinder(function() use ($request){
             if ($request instanceof Request) {
                 return $request->getBaseWithoutQuery();
