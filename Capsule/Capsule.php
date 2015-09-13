@@ -76,6 +76,27 @@ class Capsule implements ArrayAccess, CapsuleInterface
         return $this;
     }
 
+
+    /**
+     * return all registered database connection
+     *
+     * @return array
+     */
+    public function getConnections(){
+        return $this->connections;
+    }
+
+
+    /**
+     * determine there is a $name database
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function isConnection($name = ''){
+        return isset($this->connections[$name]);
+    }
+
     /**
      * Whether a offset exists
      * @link http://php.net/manual/en/arrayaccess.offsetexists.php
