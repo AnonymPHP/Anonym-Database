@@ -16,7 +16,7 @@ use ArrayAccess;
  * Class Capsule
  * @package Anonym\Components\Database\Capsule
  */
-class Capsule implements ArrayAccess, CapsuleInterface
+class Capsule implements ArrayAccess
 {
 
     /**
