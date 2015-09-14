@@ -16,6 +16,8 @@ use Anonym\Components\Database\Mode\Update;
 use Anonym\Components\Database\Mode\Insert;
 use Anonym\Components\Database\Traits\ConnectionManager;
 use Anonym\Components\Database\Traits\ModeManager;
+use PDO;
+use mysqli;
 /**
  * Class Base
  * @package Anonym\Components\Database
@@ -164,6 +166,20 @@ class Base extends Starter
         return $return;
     }
 
+    /**
+     * return the last query error
+     *
+     * @return string
+     */
+    public function errorInfo(){
+        if ($this->getConnection() instanceof PDO) {
+            $message = isset($this->connection->errorInfo()['message']) ? $this->getConnection()->errorInfo()['message'] : 'Something Went Wrong!';
+        } elseif ($this->getConnection() instanceof mysqli) {
+            $message = $this->getConnection()->error;
+        }
+
+        return $message;
+    }
     /**
      * Veritabanının içeriğini döndürür.
      *
