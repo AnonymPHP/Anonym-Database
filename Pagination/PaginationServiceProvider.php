@@ -15,7 +15,6 @@ use Anonym\Bootstrap\ServiceProvider;
 use Anonym\Components\HttpClient\Request;
 use Anonym\Facades\App;
 use GUMP;
-
 /**
  * Class PaginationServiceProvider
  * @package Anonym\Components\Database\Pagination
@@ -33,13 +32,14 @@ class PaginationServiceProvider extends ServiceProvider
     {
         Paginator::setCurrentPageFinder(function(){
             if (isset($_GET['page'])) {
-                $page = GUMP::xss_clean($_GET['page']);
+                $page = GUMP::xss_clean([$_GET['page']]);
 
                 return $page;
             }else{
                 return 1;
             }
         });
+
 
         $request = App::make('http.request');
         Paginator::setRequestPathFinder(function() use ($request){
