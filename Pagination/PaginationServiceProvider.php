@@ -32,7 +32,7 @@ class PaginationServiceProvider extends ServiceProvider
     {
         Paginator::setCurrentPageFinder(function(){
             if (isset($_GET['page'])) {
-                $page = GUMP::xss_clean([$_GET['page']]);
+                $page = first(GUMP::xss_clean([$_GET['page']]));
 
                 return $page;
             }else{
