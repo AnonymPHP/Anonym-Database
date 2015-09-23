@@ -14,6 +14,7 @@ namespace Anonym\Components\Database\Pagination;
 use Anonym\Bootstrap\ServiceProvider;
 use Anonym\Components\HttpClient\Request;
 use Anonym\Facades\App;
+use GUMP;
 
 /**
  * Class PaginationServiceProvider
