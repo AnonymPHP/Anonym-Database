@@ -37,12 +37,6 @@ class BuildManager
      */
     private $query;
 
-    /**
-     * Sayfayı tutar
-     *
-     * @var int
-     */
-    private $page;
 
     /**
      * Gönderilecek parametreleri tutar
@@ -62,18 +56,6 @@ class BuildManager
         $this->connection = $base;
     }
 
-    /**
-     * Sayfalama olayı için şuan bulunulan sayfayı atar
-     *
-     * @param int $page
-     * @return $this
-     */
-    public function setPage($page = 0)
-    {
-        $this->page = $page;
-
-        return $this;
-    }
 
     /**
      * Query Sorgusunu atar
