@@ -309,11 +309,12 @@ class ModeManager
         $pathFinder = Paginator::getRequestPathFinder();
 
 
-        $pagination = new Paginator($perPage, $currentPageFinder(), [
+        $pagination = new Paginator($perPage, call_user_func($currentPageFinder), [
             'pageName' => 'page',
-            'path' => $pathFinder()
+            'path' => call_user_func($pathFinder),
         ]);
 
+        $pagination->setMode(Paginator::MODE_STANDART);
         $count = $this->build()->rowCount();
 
         $pagination->count($count);
